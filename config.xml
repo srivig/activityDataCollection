@@ -2,10 +2,10 @@
 <widget id="com.example.MyDiaryApp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MyDiaryApp</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A Apache Cordova application to log daily activities and share the data for research purposes.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="sr717@cam.ac.uk" href="http://srivi.in">
+        Cambridge University
     </author>
     <content src="index.html" />
     <access origin="*" />

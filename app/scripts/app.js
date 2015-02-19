@@ -35,15 +35,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'UserApp'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
@@ -60,33 +51,34 @@ angular.module('starter', ['ionic', 'starter.controllers', 'UserApp'])
     }
   })
 
-  .state('app.browse', {
-      url: "/browse",
+    .state('app.activities', {
+      url: "/activities",
       views: {
         'menuContent': {
-          templateUrl: "templates/browse.html"
+          templateUrl: "templates/activities.html",
+          controller: 'ActivitiesCtrl'
         }
       }
     })
-    .state('app.playlists', {
-      url: "/playlists",
+
+    .state('app.home', {
+      url: "/home",
       views: {
         'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/home.html",
         }
       }
     })
 
   .state('app.single', {
-    url: "/playlists/:playlistId",
+    url: "/activities/:activityId",
     views: {
       'menuContent': {
-        templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
+        templateUrl: "templates/startActivity.html",
+        controller: 'ActivityCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/browse');
+  $urlRouterProvider.otherwise('/app/home');
 });

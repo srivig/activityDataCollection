@@ -33,16 +33,18 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+.controller('ActivitiesCtrl', function($scope) {
+  $scope.activities = [
+    { title: 'Sleep', id: 1 },
+    { title: 'Work', id: 2 },
+    { title: 'Eat', id: 3 },
+    { title: 'Sports', id: 4 },
+    { title: 'With friends', id: 5 },
+    { title: 'Party', id: 6 }
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('ActivityCtrl', function($scope, $stateParams) {
+
+  $scope.activityId = $stateParams.activityId
 });

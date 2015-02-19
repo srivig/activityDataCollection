@@ -1,13 +1,35 @@
-<p>Please log in</p>
+<ion-header-bar>
+  <h1 class="title">Login</h1>
+</ion-header-bar>
+<ion-content>
 
-<form ua-login>
-  <input name="login" placeholder="Email"><br>
-  <input name="password" placeholder="Password" type="password"><br>
-  <p><button type="submit">Log in</button></p>
+  <form ua-login>
+    <div class="list">
 
-  <p ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></p>
-  <p ng-show="error">{{ error.message }}</p>
-</form>
 
-<p><a href="#/signup">Sign up</a></p>
-<p><a href="#/reset-password">Reset password</a></p>
+      <label class="item item-input">
+        <span class="input-label">Email</span>
+        <input name="login" type="text" placeholder="Email">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Password</span>
+        <input name="password" placeholder="Password" type="password">
+      </label>
+      <label class="item">
+        <button class="button button-block button-positive" type="submit">Log in</button>
+      </label>
+
+      <p ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif">
+      </p>
+      <p ng-show="error">{{ error.message }}</p>
+    </div>
+
+  </form>
+
+  <a href="#/signup">Sign up</a>
+  <a href="#/reset-password">Reset password</a>
+
+
+
+
+</ion-content>
