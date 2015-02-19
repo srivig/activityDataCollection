@@ -40,7 +40,9 @@ angular.module('starter.controllers', [])
     { title: 'Eat', id: 3 },
     { title: 'Sports', id: 4 },
     { title: 'With friends', id: 5 },
-    { title: 'Party', id: 6 }
+    { title: 'Party', id: 6 },
+    { title: 'Games', id: 7 }
+
   ];
 })
 

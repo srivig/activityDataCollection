@@ -11,6 +11,10 @@
     <!-- endbower -->
     <!-- endbuild -->
     <link href="styles/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/calendarStyle.css">
+    <link rel="stylesheet" href="styles/chartist.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="styles/ionic.app.css" rel="stylesheet">
@@ -19,6 +23,7 @@
     <!-- ionic/angularjs js -->
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -40,9 +45,14 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers.js"></script>
     <script src="scripts/configuration.js"></script>
+    <script src="scripts/chartist.js" ></script>
+
+
+
+
     <!-- endbuild -->
   </head>
-
+  
   <body ng-app="starter">
     <ion-nav-view></ion-nav-view>
   </body>

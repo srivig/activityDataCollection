@@ -1,1 +1,109 @@
-/* Your application styles go here */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/ricepaper2.png);
+}
+td,
+body,
+span {
+  font-family: tahoma, verdana;
+}
+#diaryEvents {
+  width: 100%;
+}
+label {
+  font-size: 75%;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  margin: 5px;
+  padding: 2px;
+  padding-left: 25px;
+  margin-right: 15px;
+  color: #ccc;
+  border-bottom: 1px dotted #ccc;
+}
+input[type=radio]:checked + label {
+  /*font-weight: bold;*/
+
+  border-bottom-style: solid;
+  border-width: 2px;
+}
+input[type=radio] {
+  display: none;
+}
+label[for^=d]:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  position: absolute;
+  left: 0;
+  border: 4px solid #444;
+}
+label[for^=l]:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  position: absolute;
+  left: 0;
+  border: 4px solid #aaa;
+}
+label[for*=yellow]:before {
+  background-color: #FFD131;
+}
+label[for*=blue]:before {
+  background-color: #4AC6F1;
+}
+label[for*=lime]:before {
+  background-color: #E1E74A;
+}
+label[for*=pink]:before {
+  background-color: #F373A0;
+}
+label[for*=brown]:before {
+  background-color: #97744B;
+}
+label[for*=red]:before {
+  background-color: #C74B3E;
+}
+label[for*=green]:before {
+  background-color: #039535;
+}
+label[for*=violet]:before {
+  background-color: #8576FE;
+}
+.csscode {
+  color: #FFFF99;
+}
+#timeWheel {
+  width: 300px;
+  margin: 40px auto;
+  position: relative;
+}
+#addNew {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: #F45F7B;
+  position: absolute;
+  padding: 12px;
+  text-align: center;
+  top: 53%;
+  left: 42%;
+  color: #fff;
+  z-index: 99999;
+  font-size: 2.5em;
+  box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
+}
+ion-view.pane {
+  background-image: url(../images/ricepaper2.png);
+}
+#diaryEvents tbody tr:first-child {
+  background: rgba(242, 56, 90, 0.8);
+}
