@@ -47,6 +47,29 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ActivityCtrl', function($scope, $stateParams) {
+  var d = new Date();
+
+  var month = d.getMonth()+1;
+  var day = d.getDate();
+
+  var outputDate = d.getFullYear() + '/' +
+      ((''+month).length<2 ? '0' : '') + month + '/' +
+      ((''+day).length<2 ? '0' : '') + day;
 
   $scope.activityId = $stateParams.activityId
+  $scope.today = outputDate; 
+  $scope.options = {
+    labelMonthNext: 'Go to the next month',
+    labelMonthPrev: 'Go to the previous month',
+    labelMonthSelect: 'Pick a month from the dropdown',
+    labelYearSelect: 'Pick a year from the dropdown',
+    selectMonths: true,
+    selectYears: true,
+    now: 'picker__day--today',
+
+  onClose: function(e) {
+    // do something when the picker closes
+  }
+}
+
 });
