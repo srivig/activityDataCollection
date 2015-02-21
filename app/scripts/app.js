@@ -4,7 +4,15 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'UserApp', 'angular-datepicker'])
+
+angular.module('ui.timepicker').value('uiTimepickerConfig',{
+  "showDuration": true,
+  "show2400":true,
+  "scrollDefault": "now",
+  "asMoment": false
+});
+
+angular.module('starter', ['ionic', 'starter.controllers', 'UserApp', 'ui.timepicker'])
 
 .run(function($ionicPlatform, user) {
   $ionicPlatform.ready(function() {

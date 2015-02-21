@@ -3,7 +3,10 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-image: url(../images/ricepaper2.png);
+  border-color: #b2b2b2;
+  background-color: #f8f8f8;
+  background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+  /*background-image: url(../images/ricepaper2.png);*/
 }
 td,
 body,
@@ -105,8 +108,30 @@ label[for*=violet]:before {
   text-decoration: none;
 }
 ion-view.pane {
-  background-image: url(../images/ricepaper2.png);
+  /*background-image: url(../images/ricepaper2.png);*/
+
+  border-color: #b2b2b2;
+  background-color: #f8f8f8;
 }
 #diaryEvents tbody tr:first-child {
   background: rgba(242, 56, 90, 0.8);
+}
+label.activityPageLabel {
+  width: 100%;
+  border: 0;
+  color: #D3D3D3;
+  font-size: 1em;
+}
+.ui-timepicker-wrapper {
+  width: 80%;
+}
+.ui-timepicker-list li {
+  padding: 14px 0 3px 5px;
+  border-bottom: 1px solid #F5F5F5;
+}
+.activityIconTweaks {
+  font-size: 2em;
+  padding: 8px 10px;
+  background: #FF8585;
+  color: #fff;
 }

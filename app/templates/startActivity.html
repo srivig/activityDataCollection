@@ -1,10 +1,39 @@
-<ion-view view-title="Meow">
+<ion-view view-title="{{activity.activityLabel.title}}" data-tap-disabled="true">
   <ion-content>
-    <h1>{{activityId}}</h1>
+    <!--dirty spacing stuff beings-->
+    </br>
+    </br>
+    </br>
+    <!--dirty spacing stuff ends-->
+    <div class="list">
 
-  start
-  <input type="text" data-value="{{today}}" pick-a-date="date" pick-a-date-options="options" /> {{ date }}
-  <input type="text" pick-a-time="time" pick-a-time-options="options" /> {{ time }}
+      <label class="row col-80 col-offset-10 activityPageLabel">Start time</label>
+      <div class="row col-80 col-offset-10">
+        <i class="icon ion-ios-clock-outline activityIconTweaks"></i>
+        <input class="item col" ng-model="activity.startTime" ui-timepicker="activity.uitp-options1" />
+      </div>
+      <!--dirty spacing stuff beings-->
+      </br>
+      </br>
+      </br>
+      <!--dirty spacing stuff ends-->
+      <label class="row col-80 col-offset-10 activityPageLabel">End time</label>
+      <div class="row col-80 col-offset-10">
+        <i class="icon ion-ios-alarm-outline activityIconTweaks"></i>
+        <input class="item col" ng-model="activity.endTime" ui-timepicker="activity.uitp-options2" placeholder="End Time" />
+      </div>
 
+      <!--dirty spacing stuff beings-->
+      </br>
+      </br>
+      </br>
+      {{activity}}
+    </br>
+  </br>
+      <!--dirty spacing stuff ends-->
+      <div class="row ">
+        <button class="button button-positive col col-33 col-offset-33">Done</button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

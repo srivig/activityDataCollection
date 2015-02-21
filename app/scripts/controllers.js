@@ -34,42 +34,66 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ActivitiesCtrl', function($scope) {
-  $scope.activities = [
-    { title: 'Sleep', id: 1 },
-    { title: 'Work', id: 2 },
-    { title: 'Eat', id: 3 },
-    { title: 'Sports', id: 4 },
-    { title: 'With friends', id: 5 },
-    { title: 'Party', id: 6 },
-    { title: 'Games', id: 7 }
-
-  ];
+  $scope.activities = activities;
 })
 
 .controller('ActivityCtrl', function($scope, $stateParams) {
   var d = new Date();
 
-  var month = d.getMonth()+1;
+  var month = d.getMonth() + 1;
   var day = d.getDate();
 
-  var outputDate = d.getFullYear() + '/' +
-      ((''+month).length<2 ? '0' : '') + month + '/' +
-      ((''+day).length<2 ? '0' : '') + day;
+  var outputDate = d.getFullYear() + '/' + (('' + month).length < 2 ? '0' : '') + month + '/' + (('' + day).length < 2 ? '0' : '') + day;
 
-  $scope.activityId = $stateParams.activityId
-  $scope.today = outputDate; 
-  $scope.options = {
-    labelMonthNext: 'Go to the next month',
-    labelMonthPrev: 'Go to the previous month',
-    labelMonthSelect: 'Pick a month from the dropdown',
-    labelYearSelect: 'Pick a year from the dropdown',
-    selectMonths: true,
-    selectYears: true,
-    now: 'picker__day--today',
-
-  onClose: function(e) {
-    // do something when the picker closes
+  $scope.activity = {
+    "startTime": new Date(),
+    "endTime": new Date().addHours(1),
+    "activityId": $stateParams.activityId,
+    "activityLabel": activities[$stateParams.activityId-1],
+    "today": outputDate,
+    "uitp-options1": {
+      "showDuration": true,
+      "show2400":true,
+      "scrollDefault": "now",
+      "asMoment": false
+    },
+    "uitp-options2": {
+      "showDuration": true,
+      "asMoment": false
+    }
   }
-}
+
 
 });
+
+Date.prototype.addHours = function(h) {
+  this.setHours(this.getHours() + h);
+  return this;
+}
+
+var activityGraph = [];
+
+var activities = [{
+    title: 'Sleep',
+    id: 1
+  }, {
+    title: 'Work',
+    id: 2
+  }, {
+    title: 'Eat',
+    id: 3
+  }, {
+    title: 'Sports',
+    id: 4
+  }, {
+    title: 'With friends',
+    id: 5
+  }, {
+    title: 'Party',
+    id: 6
+  }, {
+    title: 'Games',
+    id: 7
+  }
+
+];
