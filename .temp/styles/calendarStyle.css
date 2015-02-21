@@ -17,7 +17,7 @@
   background: #646464;
 }
 #diaryEvents #lcescrollcontainer > #lcescroller.activeitem {
-  background: #FFC006;
+  background: #F44F6D;
 }
 #diaryEvents #lcemitem {
   margin-bottom: 1px;
@@ -28,11 +28,11 @@
   padding-top: 2px;
   width: auto;
   color: #E6E6E6;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #F44F6D;
 }
 #diaryEvents #lcemitem.newmonth > #lcemcapt {
   color: #E3E3E3;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: #F44F6D;
 }
 #diaryEvents #lcewitem {} #diaryEvents #lcewitem.newweek {} #diaryEvents #lcewitem > #lcewcapt {
   font-size: 80%;
@@ -51,23 +51,23 @@
   font-size: 90%;
   text-align: center;
   color: #FFFFFF;
-  background: #F2385A;
+  background: #F44F6D;
 }
 #diaryEvents #lceditem > #lcedcapt.newweek {
-  color: #EDEDED;
-  background: #E82E50;
+  color: #fff;
+  /*background: #E82E50;*/
 }
 #diaryEvents #lceditem > #lcedcapt.nowdate {
   color: #221B05;
-  background: #FFCE3E;
+  background: #FF6682;
 }
 #diaryEvents #lceditem > #lcedcapt.weekend {
   font-weight: bold;
-  color: #DFDFDF;
+  color: #fff;
 }
 #diaryEvents #lceditem > #lcedcapt.activeitem {
   color: #242424;
-  background: #FAFAFA;
+  /*background: #FAFAFA;*/
 }
 #diaryEvents #lceditem > #lcedbody {
   width: 80px;
@@ -75,22 +75,27 @@
   text-align: center;
   font-size: 100%;
   color: #FFF;
-  background: rgba(242, 56, 90, 0.8);
+  background: #F44F6D;
 }
 #diaryEvents #lceditem > #lcedbody.newweek {
   color: #FFF;
-  background: #F2385A;
+  background: #F44F6D;
 }
 #diaryEvents #lceditem > #lcedbody.nowdate {
-  color: #231F16;
-  background: #FFDF82;
+  color: #FFFFFF!important;
+  background: #FF6682;
+  margin-bottom: 11px;
+  font-weight: bold;
+  height: 50px;
+  box-shadow: 0px 8px 8px -2px rgba(0, 0, 0, 0.09);
+  /*background: #FFDF82;*/
 }
 #diaryEvents #lceditem > #lcedbody.weekend {
   color: #DFDFDF;
 }
 #diaryEvents #lceditem > #lcedbody.activeitem {
   color: #232323;
-  background: #FAFAFA;
+  /*background: #FAFAFA;*/
 }
 #diaryEvents #lceditem > #lcedbody.iseventday {
   color: #221B05;
@@ -142,4 +147,20 @@
 }
 #diaryEvents+#lceevents+#lceevntshortcut {
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMzZweCIgaGVpZ2h0PSIxOHB4IiB2aWV3Qm94PSIwIDAgMzYgMTgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBvbHlnb24gZmlsbD0iI0ZGRDEzMSIgc3Ryb2tlPSIjQUQ4MjFBIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHBvaW50cz0iMTgsMS41IDM0LjUsMTYuNSAxLjUsMTYuNSIvPg0KPC9zdmc+');
+}
+
+#diaryEvents tbody tr:first-child {
+  background-color: #F44F6D;
+}
+#diaryEvents.actPageStyle {
+  margin: 0 auto;
+  width: 80px;
+}
+
+#diaryEvents.actPageStyle #lceditem > #lcedcapt.nowdate{
+  /*font-size: 1.1em;*/
+}
+#diaryEvents.actPageStyle #lceditem > #lcedbody.nowdate{
+  font-size: 2em;
+
 }

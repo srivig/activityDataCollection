@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
   //================================
 
-  $('#diaryEvents').diaryEvents({
+  $('#diaryEvents._diaryEvents').diaryEvents({
     nowdate: new Date(),
     firstday: 1,
     lcesize: 100,

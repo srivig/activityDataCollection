@@ -12,7 +12,7 @@ angular.module('ui.timepicker').value('uiTimepickerConfig',{
   "asMoment": false
 });
 
-angular.module('starter', ['ionic', 'starter.controllers', 'UserApp', 'ui.timepicker'])
+angular.module('starter', ['ionic', 'starter.controllers', 'UserApp', 'ui.timepicker','chart.js'])
 
 .run(function($ionicPlatform, user) {
   $ionicPlatform.ready(function() {
@@ -74,6 +74,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'UserApp', 'ui.timepi
       views: {
         'menuContent': {
           templateUrl: "templates/home.html",
+          controller: 'HomeCtrl'
         }
       }
     })

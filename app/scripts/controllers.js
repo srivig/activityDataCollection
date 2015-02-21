@@ -37,7 +37,21 @@ angular.module('starter.controllers', [])
   $scope.activities = activities;
 })
 
-.controller('ActivityCtrl', function($scope, $stateParams) {
+.controller('HomeCtrl', function($scope){
+  $scope.init = function () {
+    new Chartist.Pie('.ct-chart', activityGraph, {
+      donut: true,
+      donutWidth: 60,
+      startAngle: 360,
+      total: 100,
+      showLabel: true,
+      width: '300px',
+      height: '300px'
+    });
+  };
+})
+
+.controller('ActivityCtrl', function($scope, $stateParams, $state, $ionicViewService) {
   var d = new Date();
 
   var month = d.getMonth() + 1;
@@ -46,32 +60,59 @@ angular.module('starter.controllers', [])
   var outputDate = d.getFullYear() + '/' + (('' + month).length < 2 ? '0' : '') + month + '/' + (('' + day).length < 2 ? '0' : '') + day;
 
   $scope.activity = {
-    "startTime": new Date(),
-    "endTime": new Date().addHours(1),
+    "startTime": moment(),
+    "endTime": moment().add(1,"h"),
     "activityId": $stateParams.activityId,
     "activityLabel": activities[$stateParams.activityId-1],
-    "today": outputDate,
+    "todayMonth": moment().format("MMM"),
+    "todayDay" : moment().format("DD"),
+    "todayWeek" : moment().format("dd"),
     "uitp-options1": {
       "showDuration": true,
       "show2400":true,
       "scrollDefault": "now",
-      "asMoment": false
+      "asMoment": true
     },
     "uitp-options2": {
       "showDuration": true,
-      "asMoment": false
+      "asMoment": true
     }
+  }
+  $scope.activityData = {};
+
+  $scope.saveData = function(d){
+    console.log($scope.activity) ;
+    createChartistObj($scope.activity);
+    $ionicViewService.nextViewOptions({
+     disableBack: true
+    });
+    $state.go('app.home');
   }
 
 
 });
+
+
+var createChartistObj = function(d){
+  var startTime = moment(d.startTime);
+  var endTime = moment(d.endTime);
+  var label = d.activityLabel.title;
+  var getDuration = (endTime.diff(startTime, 'minutes')/1440)*100;
+  console.log(getDuration);
+  activityGraph.labels.push(label);
+  activityGraph.series.push(getDuration);
+}
+
 
 Date.prototype.addHours = function(h) {
   this.setHours(this.getHours() + h);
   return this;
 }
 
-var activityGraph = [];
+var activityGraph = {
+  labels : [],
+  series:[]
+};
 
 var activities = [{
     title: 'Sleep',
