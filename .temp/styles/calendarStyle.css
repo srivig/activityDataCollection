@@ -58,7 +58,7 @@
   /*background: #E82E50;*/
 }
 #diaryEvents #lceditem > #lcedcapt.nowdate {
-  color: #221B05;
+  color: #FFF;
   background: #FF6682;
 }
 #diaryEvents #lceditem > #lcedcapt.weekend {

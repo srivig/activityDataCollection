@@ -2,35 +2,35 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   // Form data for the login modal
-  $scope.loginData = {};
+  // $scope.loginData = {};
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+  // $ionicModal.fromTemplateUrl('templates/login.html', {
+  //   scope: $scope
+  // }).then(function(modal) {
+  //   $scope.modal = modal;
+  // });
 
   // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
+  // $scope.closeLogin = function() {
+  //   $scope.modal.hide();
+  // };
 
   // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
+  // $scope.login = function() {
+  //   $scope.modal.show();
+  // };
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
+    // $scope.doLogin = function() {
+    //   console.log('Doing login', $scope.loginData);
+    //
+    //   // Simulate a login delay. Remove this and replace with your login
+    //   // code if using a login system
+    //   $timeout(function() {
+    //     $scope.closeLogin();
+    //   }, 1000);
+    // };
 })
 
 .controller('ActivitiesCtrl', function($scope) {
@@ -39,15 +39,7 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope){
   $scope.init = function () {
-    new Chartist.Pie('.ct-chart', activityGraph, {
-      donut: true,
-      donutWidth: 60,
-      startAngle: 360,
-      total: 100,
-      showLabel: true,
-      width: '300px',
-      height: '300px'
-    });
+    loadChartist =  new Chartist.Pie('.ct-chart', activityGraph, chartistOptions);
   };
 })
 
@@ -93,25 +85,55 @@ angular.module('starter.controllers', [])
 });
 
 
-var createChartistObj = function(d){
-  var startTime = moment(d.startTime);
-  var endTime = moment(d.endTime);
-  var label = d.activityLabel.title;
-  var getDuration = (endTime.diff(startTime, 'minutes')/1440)*100;
-  console.log(getDuration);
-  activityGraph.labels.push(label);
-  activityGraph.series.push(getDuration);
-}
-
+//Global functions and variables
 
 Date.prototype.addHours = function(h) {
   this.setHours(this.getHours() + h);
   return this;
 }
 
+
+var loadChartist;
+
+var createChartistObj = function(d){
+  var startTime = moment(d.startTime);
+  var endTime = moment(d.endTime);
+  var label = d.activityLabel.title;
+  var getDuration = (endTime.diff(startTime, 'minutes')/1440)*100;
+  console.log(getDuration);
+  activityGraph.labels.splice(-1,1);
+  activityGraph.series.splice(-1,1);
+  activityGraph.labels.push(label);
+  activityGraph.series.push(getDuration);
+
+  var t = 0;
+  for (i = 0; i < activityGraph.series.length; i++) {
+    t = t + activityGraph.series[i]
+  }
+  t=100-t;
+  activityGraph.labels.push("");
+  activityGraph.series.push(t);
+
+  loadChartist.update();
+
+  // update(activityGraph, chartistOptions);
+}
+
+
+
+var chartistOptions = {
+  donut: true,
+  donutWidth: 60,
+  startAngle: 360,
+  total: 100,
+  showLabel: true,
+  width: '300px',
+  height: '300px'
+}
+
 var activityGraph = {
-  labels : [],
-  series:[]
+  labels : [""],
+  series:[100]
 };
 
 var activities = [{
