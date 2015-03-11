@@ -5,14 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('ui.timepicker').value('uiTimepickerConfig',{
-  "showDuration": true,
-  "show2400":true,
-  "scrollDefault": "now",
-  "asMoment": false
-});
 
-angular.module('starter', ['ionic', 'starter.controllers', 'UserApp', 'ui.timepicker','chart.js'])
+angular.module('starter', ['ionic', 'starter.controllers', 'UserApp','chart.js'])
 
 .run(function($ionicPlatform, user) {
   $ionicPlatform.ready(function() {

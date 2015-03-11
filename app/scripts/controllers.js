@@ -1,7 +1,8 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ui.timepicker'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicSideMenuDelegate) {
  //TODO init functions...
+ $ionicSideMenuDelegate.edgeDragThreshold(0);
 })
 
 .controller('ActivitiesCtrl', function($scope) {
@@ -25,18 +26,21 @@ angular.module('starter.controllers', [])
   $scope.activity = {
     "startTime": moment(),
     "endTime": moment().add(1,"h"),
+    "startTimeFormatted" : moment().subtract(1,"minutes").format("hh:mma"),
     "activityId": $stateParams.activityId,
     "activityLabel": activities[$stateParams.activityId-1],
     "todayMonth": moment().format("MMM"),
     "todayDay" : moment().format("DD"),
     "todayWeek" : moment().format("dd"),
-    "uitp-options1": {
-      "showDuration": true,
-      "show2400":true,
-      "scrollDefault": "now",
-      "asMoment": true
+    "uitpOptions1": {
+      showDuration: true,
+      show2400:true,
+      //scrollDefault: 'now',
+      asMoment: true,
+      step: 20,
+    timeFormat: 'g:ia'
     },
-    "uitp-options2": {
+    "uitpOptions2": {
       "showDuration": true,
       "asMoment": true
     }
@@ -129,3 +133,11 @@ var activities = [{
   }
 
 ];
+
+//
+// angular.module('ui.timepicker').value('uiTimepickerConfig',{
+//   "showDuration": true,
+//   "show2400":true,
+//   "scrollDefault": "now",
+//   "asMoment": false
+// });

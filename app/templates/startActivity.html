@@ -21,11 +21,16 @@
 
   <!--dirty spacing stuff ends-->
     <div class="list">
-
       <label class="row col-80 col-offset-10 activityPageLabel">Start time</label>
       <div class="row col-80 col-offset-10">
         <i class="icon ion-ios-clock-outline activityIconTweaks"></i>
-        <input class="item col" ng-model="activity.startTime" ui-timepicker="activity.uitp-options1" />
+        <input id="actStartTime" class="item col" ng-model="activity.startTime" data-min-time="" data-show-duration="true" data-use-select=false data-scroll-default='now' ui-timepicker />
+<script>
+$(document).ready(function(){
+  $("#actStartTime,#actEndTime ").data("minTime", moment().subtract(1,"minutes").format("hh:mma"));
+
+})
+</script>
       </div>
       <!--dirty spacing stuff beings-->
       </br>
@@ -35,7 +40,7 @@
       <label class="row col-80 col-offset-10 activityPageLabel">End time</label>
       <div class="row col-80 col-offset-10">
         <i class="icon ion-ios-alarm-outline activityIconTweaks"></i>
-        <input class="item col" ng-model="activity.endTime" ui-timepicker="activity.uitp-options2" placeholder="End Time" />
+        <input  id="actEndTime" class="item col" ng-model="activity.endTime" data-min-time="" data-show-duration="true" data-use-select=false ui-timepicker placeholder="End Time" />
       </div>
 
       <!--dirty spacing stuff beings-->

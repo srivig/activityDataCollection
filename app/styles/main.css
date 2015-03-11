@@ -126,6 +126,12 @@ label.activityPageLabel {
   padding: 14px 0 3px 5px;
   border-bottom: 1px solid #F5F5F5;
 }
+
+.ui-timepicker-wrapper.ui-timepicker-with-duration {
+width: 60%!important;
+overflow-y: scroll;
+}
+
 .activityIconTweaks {
   font-size: 2em;
   padding: 8px 10px;
