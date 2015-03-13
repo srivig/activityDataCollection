@@ -124,12 +124,10 @@ label.activityPageLabel {
   padding: 14px 0 3px 5px;
   border-bottom: 1px solid #F5F5F5;
 }
-
 .ui-timepicker-wrapper.ui-timepicker-with-duration {
-width: 60%!important;
-overflow-y: scroll;
+  width: 60%!important;
+  overflow-y: scroll;
 }
-
 .activityIconTweaks {
   font-size: 2em;
   padding: 8px 10px;
@@ -141,4 +139,59 @@ overflow-y: scroll;
   color: #fff!important;
   fill: #fff;
   font-weight: bold;
+}
+/*-----vendor------*/
+
+#time-range {
+  width: 310px;
+  margin-top: 25px;
+  margin-left: -1px;
+}
+#time-range p {
+  font-size: 14px;
+  color: #333;
+}
+#time-range .ui-corner-all {
+  border-radius: 0;
+}
+#time-range .sliderButtonLine {
+  position: absolute;
+  width: 230px;
+  left: -250px;
+  border-top: 1px solid #E7E6E6;
+  top: 23px;
+}
+
+.ui-widget-content {
+  background: #FF6682;
+}
+.ui-slider-vertical {
+  width: 201px;
+}
+.ui-slider-vertical .ui-slider-handle {
+  left: 15.7em;
+  width: 104px;
+  margin-left: 0;
+  margin-bottom: -23px;
+  height: 46px;
+  padding: 14px;
+  text-align: center;
+  background: #FF6682;
+  border: 0;
+  box-shadow: -5px 1px 12px 1px rgba(0, 0, 0, 0.19);
+  color: #fff;
+}
+.ui-slider-vertical .ui-slider-handle:after {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(255, 102, 130, 0);
+  border-right-color: #FF6682;
+  border-width: 23px;
+  margin-top: -23px;
 }

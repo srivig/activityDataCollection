@@ -81,6 +81,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'UserApp','chart.js']
         controller: 'ActivityCtrl'
       }
     }
+  })
+
+  .state('app.startActivity2', {
+    url: "/activities2/:activityId",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/startActivity_2.html",
+        controller: 'ActivityCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');

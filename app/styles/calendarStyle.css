@@ -153,14 +153,16 @@
   background-color: #F44F6D;
 }
 #diaryEvents.actPageStyle {
-  margin: 0 auto;
   width: 80px;
+  position: absolute;
+  z-index: 999;
 }
 
 #diaryEvents.actPageStyle #lceditem > #lcedcapt.nowdate{
   /*font-size: 1.1em;*/
+  width: 200px;
 }
 #diaryEvents.actPageStyle #lceditem > #lcedbody.nowdate{
   font-size: 2em;
-
+  width: 200px;
 }
