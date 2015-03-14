@@ -5,13 +5,16 @@ html, body {
   border-color: #b2b2b2;
   background-color: #f8f8f8;
   background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
-  /*background-image: url(../images/ricepaper2.png);*/ }
+  /*background-image: url(../images/ricepaper2.png);*/
+}
 
 td, body, span {
-  /*font-family: tahoma, verdana;*/ }
+  /*font-family: tahoma, verdana;*/
+}
 
 #diaryEvents {
-  width: 100%; }
+  width: 100%;
+}
 
 label {
   font-size: 75%;
@@ -23,57 +26,74 @@ label {
   padding-left: 25px;
   margin-right: 15px;
   color: #ccc;
-  border-bottom: 1px dotted #ccc; }
+  border-bottom: 1px dotted #ccc;
+}
 
 input[type=radio] {
-  display: none; }
-  input[type=radio]:checked + label {
+  &:checked + label {
     /*font-weight: bold;*/
     border-bottom-style: solid;
-    border-width: 2px; }
+    border-width: 2px;
+  }
+  display: none;
+}
 
-label[for^=d]:before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 10px;
-  position: absolute;
-  left: 0;
-  border: 4px solid #444; }
-label[for^=l]:before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 10px;
-  position: absolute;
-  left: 0;
-  border: 4px solid #aaa; }
-label[for*=yellow]:before {
-  background-color: #FFD131; }
-label[for*=blue]:before {
-  background-color: #4AC6F1; }
-label[for*=lime]:before {
-  background-color: #E1E74A; }
-label[for*=pink]:before {
-  background-color: #F373A0; }
-label[for*=brown]:before {
-  background-color: #97744B; }
-label[for*=red]:before {
-  background-color: #C74B3E; }
-label[for*=green]:before {
-  background-color: #039535; }
-label[for*=violet]:before {
-  background-color: #8576FE; }
+label {
+  &[for^=d]:before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    border: 4px solid #444;
+  }
+  &[for^=l]:before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    border: 4px solid #aaa;
+  }
+  &[for*=yellow]:before {
+    background-color: #FFD131;
+  }
+  &[for*=blue]:before {
+    background-color: #4AC6F1;
+  }
+  &[for*=lime]:before {
+    background-color: #E1E74A;
+  }
+  &[for*=pink]:before {
+    background-color: #F373A0;
+  }
+  &[for*=brown]:before {
+    background-color: #97744B;
+  }
+  &[for*=red]:before {
+    background-color: #C74B3E;
+  }
+  &[for*=green]:before {
+    background-color: #039535;
+  }
+  &[for*=violet]:before {
+    background-color: #8576FE;
+  }
+}
 
 .csscode {
-  color: #FFFF99; }
+  color: #FFFF99;
+}
 
 #timeWheel {
   width: 300px;
   margin: 40px auto;
-  position: relative; }
+  position: relative;
+}
 
 #addNew {
   border-radius: 50%;
@@ -88,8 +108,11 @@ label[for*=violet]:before {
   color: #fff;
   z-index: 99999;
   font-size: 2.5em;
+  -webkit-box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
+  -moz-box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
   box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 #buttonTick {
   border-radius: 50%;
@@ -104,88 +127,108 @@ label[for*=violet]:before {
   color: #fff;
   z-index: 99999;
   font-size: 1.5em;
+  -webkit-box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
+  -moz-box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
   box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
   text-decoration: none;
-  border: 0; }
-
+  border:0;
+}
 .actButtonPos {
   position: absolute;
   bottom: 100px;
   z-index: 9;
-  left: 80%; }
+  left: 80%;
+}
+
 
 ion-view.pane {
   /*background-image: url(../images/ricepaper2.png);*/
   border-color: #b2b2b2;
-  background-color: #f8f8f8; }
+  background-color: #f8f8f8;
+}
 
 label.activityPageLabel {
   width: 100%;
   border: 0;
   color: #D3D3D3;
-  font-size: 1em; }
+  font-size: 1em;
+}
 
 .ui-timepicker-wrapper {
-  width: 80%; }
+  width: 80%;
+}
 
 .ui-timepicker-list li {
   padding: 14px 0 3px 5px;
-  border-bottom: 1px solid #F5F5F5; }
+  border-bottom: 1px solid #F5F5F5;
+}
 
 .ui-timepicker-wrapper.ui-timepicker-with-duration {
   width: 60% !important;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+}
 
 .activityIconTweaks {
   font-size: 2em;
   padding: 8px 10px;
   background: #F44F6D;
-  color: #fff; }
+  color: #fff;
+}
 
 .ct-chart .ct-label {
   color: #fff !important;
   fill: #fff;
-  font-weight: bold; }
-  .ct-chart .ct-label.ct-horizontal {
+  font-weight: bold;
+  &.ct-horizontal {
     color: #fff !important;
     fill: #fff;
-    font-weight: bold; }
+    font-weight: bold;
+  }
+}
 
 /*-----vendor------*/
+
 #time-range {
   width: 310px;
   margin-top: 25px;
-  margin-left: -1px; }
-  #time-range p {
+  margin-left: -1px;
+  p {
     font-size: 14px;
-    color: #333; }
-  #time-range .ui-corner-all {
-    border-radius: 0; }
-  #time-range .sliderButtonLine {
+    color: #333;
+  }
+  .ui-corner-all {
+    border-radius: 0;
+  }
+  .sliderButtonLine {
     position: absolute;
     width: 230px;
     left: -250px;
     border-top: 1px solid #E7E6E6;
-    top: 23px; }
-  #time-range .timeTick {
-    width: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.37);
-    position: relative;
-    z-index: 2; }
-  #time-range .tickText {
-    position: absolute;
-    top: -10px;
-    left: 113px;
-    width: 85px;
-    color: rgba(255, 255, 255, 0.51);
-    font-size: 16px; }
+    top: 23px;
+  }
+  .timeTick {
+  width: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.37);
+  position: relative;
+  z-index: 2;
+}
+.tickText {
+  position: absolute;
+  top: -10px;
+  left: 113px;
+  width: 85px;
+  color: rgba(255, 255, 255, 0.51);
+  font-size: 16px;
+}
+}
 
 .ui-widget-content {
-  background: #FF6682; }
+  background: #FF6682;
+}
 
 .ui-slider-vertical {
-  width: 202px; }
-  .ui-slider-vertical .ui-slider-handle {
+  width: 202px;
+  .ui-slider-handle {
     left: 15.7em;
     width: 104px;
     margin-left: 0;
@@ -196,8 +239,8 @@ label.activityPageLabel {
     background: #FF6682;
     border: 0;
     box-shadow: -5px 1px 12px 1px rgba(0, 0, 0, 0.19);
-    color: #fff; }
-    .ui-slider-vertical .ui-slider-handle:after {
+    color: #fff;
+    &:after {
       right: 100%;
       top: 50%;
       border: solid transparent;
@@ -209,4 +252,7 @@ label.activityPageLabel {
       border-color: rgba(255, 102, 130, 0);
       border-right-color: #FF6682;
       border-width: 23px;
-      margin-top: -23px; }
+      margin-top: -23px;
+    }
+  }
+}

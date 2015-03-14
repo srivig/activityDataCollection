@@ -9,21 +9,46 @@ $(document).ready(function(){
       step: 15,
       values: [840, 1440],
       create: function(){
-        $(".ui-slider-handle.ui-state-default.ui-corner-all").each(function(){
+      var  _sliderButton = "#time-range .ui-slider-handle.ui-state-default.ui-corner-all",
+      _timeRangeVerticalContainer = "#time-range .ui-slider-vertical",
+      _timeTickContainer = "<div class='timeTickContainer'></div>",
+      _timeTick = "<div class='timeTick'></div>",
+      verticalContainerHeight;
+      _timeTickContainer = $(_timeTickContainer);
+      _timeTick = $(_timeTick);
+
+
+
+      //add cool slider buttons
+
+      $(_sliderButton).each(function(){
 
           var lineHTML = "<div class='sliderButtonLine'></div>",
           timeHTML = "<div class='sliderButtonTime'></div>";
 
           $(this).append($(lineHTML)).append($(timeHTML));
-          $("#time-range .ui-slider-vertical").height($(window).height()-50);
-        })
-        var hours1 = Math.floor((1440-520) / 60);
-        var minutes1 = (1440-520) - (hours1 * 60);
-        var hours2 = Math.floor((1440-820) / 60);
-        var minutes2 = (1440-820) - (hours2 * 60);
+          $(_timeRangeVerticalContainer).height($(window).height()-110);
+      });
 
-        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime")[1]).text('00:00 AM');
-        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime")[0]).text('10:00 AM');
+      verticalContainerHeight = Math.round($(_timeRangeVerticalContainer).height());
+      _timeTick.height(verticalContainerHeight/24);
+      //add ticks
+      for(var i = 0;  i < 23 ; i++){
+        var div = _timeTick.clone();
+        if(i===12){
+          div.append('<span class="tickText">12:00 PM</span>');
+          div.width(100);
+        }
+        _timeTickContainer.append(div);
+
+      }
+
+
+      $(_timeRangeVerticalContainer).prepend(_timeTickContainer);
+
+        // this should be dynamic
+        $($(_sliderButton + " .sliderButtonTime")[1]).text('00:00 AM');
+        $($(_sliderButton + " .sliderButtonTime")[0]).text('10:00 AM');
 
       },
       slide: function (e, ui) {
