@@ -6,14 +6,14 @@
 // 'starter.controllers' is found in controllers.js
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'UserApp','chart.js'])
+var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers', 'UserApp','chart.js'])
 
 .run(function($ionicPlatform, user) {
   $ionicPlatform.ready(function() {
 
-    user.init({
-      appId: '54e3f3d8f275b'
-    });
+    // user.init({
+    //   appId: '54e3f3d8f275b'
+    // });
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -41,7 +41,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'UserApp','chart.js']
     url: '/login',
     templateUrl: 'templates/login.html',
     data: {
-      login: true
+      login: false
     }
   })
 
@@ -72,22 +72,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'UserApp','chart.js']
         }
       }
     })
+    .state('app.home2', {
+      url: "/home2",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/home2.html",
+          controller: 'HomeCtrl'
+        }
+      }
+    })
 
-  .state('app.single', {
+  .state('app.activity', {
     url: "/activities/:activityId",
+    cache: false,
     views: {
       'menuContent': {
         templateUrl: "templates/startActivity.html",
-        controller: 'ActivityCtrl'
-      }
-    }
-  })
-
-  .state('app.startActivity2', {
-    url: "/activities2/:activityId",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/startActivity_2.html",
         controller: 'ActivityCtrl'
       }
     }

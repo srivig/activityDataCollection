@@ -1,0 +1,58 @@
+<ion-view view-title="{{activity.activityLabel.title}}" data-tap-disabled="true">
+  <ion-content>
+
+    <div id="diaryEvents" class="actPageStyle" >
+    <div id="lceditem" class="20150221" style="-webkit-user-select: none; display: inline-block; float: left;">
+      <div id="lcedcapt" class="nowdate weekend" style="-webkit-user-select: none;">{{activity.todayMonth}}</div>
+      <div id="lcedbody" class="nowdate weekend" style="position: relative; -webkit-user-select: none;">
+        <div style="position: relative; bottom: 0px; top: 0px; left: 0px; right: 0px; display: table; height: 100%; width: 100%;">
+          <span id="lcedval" style="display:table-cell; vertical-align:middle;">{{activity.todayDay}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--dirty spacing stuff beings-->
+  </br>
+  </br>
+</br>
+</br>
+</br>
+</br>
+
+  <!--dirty spacing stuff ends-->
+    <div class="list">
+      <label class="row col-80 col-offset-10 activityPageLabel">Start time</label>
+      <div class="row col-80 col-offset-10">
+        <i class="icon ion-ios-clock-outline activityIconTweaks"></i>
+        <input id="actStartTime" class="item col" ng-model="activity.startTime" data-min-time="" data-show-duration="true" data-use-select=false data-scroll-default='now' ui-timepicker />
+<script>
+$(document).ready(function(){
+  $("#actStartTime,#actEndTime ").data("minTime", moment().subtract(1,"minutes").format("hh:mma"));
+
+})
+</script>
+      </div>
+      <!--dirty spacing stuff beings-->
+      </br>
+      </br>
+      </br>
+      <!--dirty spacing stuff ends-->
+      <label class="row col-80 col-offset-10 activityPageLabel">End time</label>
+      <div class="row col-80 col-offset-10">
+        <i class="icon ion-ios-alarm-outline activityIconTweaks"></i>
+        <input  id="actEndTime" class="item col" ng-model="activity.endTime" data-min-time="" data-show-duration="true" data-use-select=false ui-timepicker placeholder="End Time" />
+      </div>
+
+      <!--dirty spacing stuff beings-->
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      <!--dirty spacing stuff ends-->
+      <div class="row ">
+        <button class="button button-positive col col-33 col-offset-33" ng-click="saveData()">Done</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,17 @@
+<ion-view view-title="My Diary" ng-init="init()">
+  <ion-content>
+  <script src="scripts/diaryEvents.js" ></script>
+  <script src="scripts/diaryEventsInit.js" ></script>
+
+    <div id="diaryEvents" class="_diaryEvents"></div>
+
+    <a id="addNew" href="#/app/activities">+</a>
+
+    <ion-list>
+      <ion-item ng-repeat="activity in activities" href="#">
+
+      </ion-item>
+    </ion-list>
+<!-- <script src="scripts/timeGraph.js"></script> -->
+  </ion-content>
+</ion-view>
