@@ -9,7 +9,6 @@ var timePicker = {
 
 
 var timeSlider = function() {
-  console.log("hi");
   $("#slider-range").slider({
     orientation: "vertical",
     range: true,

@@ -1,13 +1,26 @@
+<ion-nav-bar></ion-nav-bar>
+
+
 <ion-view view-title="My Diary" ng-init="init()">
   <ion-content>
-  <script src="scripts/diaryEvents.js" ></script>
-  <script src="scripts/diaryEventsInit.js" ></script>
+    <script src="scripts/diaryEvents.js"></script>
+    <script src="scripts/diaryEventsInit.js"></script>
 
-    <div id="diaryEvents" class="_diaryEvents"></div>
-    <div id="timeWheel">
-      <a id="addNew" href="#/app/activities">+</a>
-      <div class="ct-chart ct-perfect-fourth"></div>
-    </div>
-<!-- <script src="scripts/timeGraph.js"></script> -->
-  </ion-content>
+
+    <!--  -->
+
+    <ion-list>
+      <div id="diaryEvents" class="_diaryEvents"></div>
+      <ion-item ng-repeat="activity in listActivities">
+        <div class="row">
+          <div class="col col-75"><h2>{{activity.activityLabel.title}}<h2></div>
+          <div class="col">
+            {{activity.startTime}}<br>
+            {{activity.endTime}}
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <a id="addNew" href="#/app/activities" class="newHome">+</a>
+    </ion-content>
 </ion-view>

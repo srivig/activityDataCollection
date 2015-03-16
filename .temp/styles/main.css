@@ -91,6 +91,23 @@ label[for*=violet]:before {
   box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
   text-decoration: none; }
 
+#addNew.newHome {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: #F44F6D;
+  position: absolute;
+  padding: 12px;
+  text-align: center;
+  bottom: 6%;
+  left: 48%;
+  top: inherit;
+  color: #fff;
+  z-index: 99999;
+  font-size: 2.5em;
+  box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
+  text-decoration: none; }
+
 #buttonTick {
   border-radius: 50%;
   width: 50px;
@@ -154,7 +171,7 @@ label.activityPageLabel {
 /*-----vendor------*/
 #time-range {
   width: 310px;
-  margin-top: 25px;
+  margin-top: 18px;
   margin-left: -1px; }
   #time-range p {
     font-size: 14px;

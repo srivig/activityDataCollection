@@ -4,14 +4,10 @@
   <script src="scripts/diaryEventsInit.js" ></script>
 
     <div id="diaryEvents" class="_diaryEvents"></div>
-
-    <a id="addNew" href="#/app/activities">+</a>
-
-    <ion-list>
-      <ion-item ng-repeat="activity in activities" href="#">
-
-      </ion-item>
-    </ion-list>
-<!-- <script src="scripts/timeGraph.js"></script> -->
+    <div id="timeWheel">
+      <a id="addNew" href="#/app/activities">+</a>
+      <div class="ct-chart ct-perfect-fourth"></div>
+    </div>
+<script src="scripts/timeGraph.js"></script>
   </ion-content>
 </ion-view>

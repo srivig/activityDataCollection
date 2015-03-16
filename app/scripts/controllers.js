@@ -11,8 +11,17 @@ angular.module('myDiaryApp.controllers', [])
 
 .controller('HomeCtrl', function($scope) {
   $scope.init = function() {
-    loadChartist = new Chartist.Pie('.ct-chart', activityGraph, chartistOptions);
+    // loadChartist = new Chartist.Pie('#timeWheel .ct-chart', activityGraph, chartistOptions);
   };
+  var activities = activityObjDummy;
+  var activities = activityObject;
+
+  // activities.startTimeFormatted= moment(activities.startTime).format("hh:mma");
+  // activities.endTimeFormatted= moment(activities.endTime).format("hh:mma");
+
+  console.log($scope.listActivities);
+  $scope.listActivities = activities;
+
 })
 
 .controller('ActivityCtrl', function($scope, $stateParams, $state, $ionicHistory) {
@@ -26,15 +35,19 @@ angular.module('myDiaryApp.controllers', [])
     "startTimeFormatted": moment().subtract(1, "minutes").format("hh:mma"),
     "activityId": $stateParams.activityId,
     "activityLabel": activities[$stateParams.activityId - 1],
-    "todayMonth": moment().format("MMM"),
-    "todayDay": moment().format("DD"),
-    "todayWeek": moment().format("dd")
+    "today" : {
+      "month":  moment().format("MMM"),
+      "day": moment().format("DD"),
+      "week": moment().format("dd"),
+    }
   }
   $scope.activityData = {};
   $scope.saveData = function(d) {
+    $scope.activity.logTime = moment().format();
+    $scope.activity.id = generateUUID();
     $scope.activity.endTime = timePicker.endTime;
     $scope.activity.startTime = timePicker.startTime;
-    console.log($scope.activity.endTime);
+    activityObject.push($scope.activity);
     createChartistObj($scope.activity);
     $ionicHistory.nextViewOptions({
       disableBack: true

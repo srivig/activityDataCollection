@@ -72,11 +72,11 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
         }
       }
     })
-    .state('app.home2', {
-      url: "/home2",
+    .state('app.chart', {
+      url: "/chart",
       views: {
         'menuContent': {
-          templateUrl: "templates/home2.html",
+          templateUrl: "templates/chart.html",
           controller: 'HomeCtrl'
         }
       }

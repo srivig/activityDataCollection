@@ -1,6 +1,14 @@
 jQuery(document).ready(function() {
   //================================
 
+if ( !$('#diaryEvents._diaryEvents').children().length){
+  initCalendar();
+}
+
+
+});
+
+function initCalendar(){
   $('#diaryEvents._diaryEvents').diaryEvents({
     nowdate: new Date(),
     firstday: 1,
@@ -10,7 +18,7 @@ jQuery(document).ready(function() {
     showScroll: false,
     showMonthYear: true,
     showDayOfWeek: true,
-    showNumberOfWeek: true,
+    showNumberOfWeek: false,
     links: new Array({
       date: '20140207',
       title: 'Go to http://codecanyon.net in new window',
@@ -65,90 +73,90 @@ jQuery(document).ready(function() {
         $('html, body').css('background', 'url(images/darkbg.png)');
         $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_yellow_fd.css"&gt;');
         break;
-        case "dlime":
-          $('#cssmain').attr('href', 'css/licogray_lime_fd.css');
-          $('html, body').css('background', 'url(images/darkbg.png)');
-          $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_lime_fd.css"&gt;');
-          break;
-          case "dblue":
-            $('#cssmain').attr('href', 'css/licogray_blue_fd.css');
-            $('html, body').css('background', 'url(images/darkbg.png)');
-            $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_blue_fd.css"&gt;');
-            break;
-            case "dpink":
-              $('#cssmain').attr('href', 'css/licogray_pink_fd.css');
-              $('html, body').css('background', 'url(images/darkbg.png)');
-              $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_pink_fd.css"&gt;');
-              break;
+      case "dlime":
+        $('#cssmain').attr('href', 'css/licogray_lime_fd.css');
+        $('html, body').css('background', 'url(images/darkbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_lime_fd.css"&gt;');
+        break;
+      case "dblue":
+        $('#cssmain').attr('href', 'css/licogray_blue_fd.css');
+        $('html, body').css('background', 'url(images/darkbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_blue_fd.css"&gt;');
+        break;
+      case "dpink":
+        $('#cssmain').attr('href', 'css/licogray_pink_fd.css');
+        $('html, body').css('background', 'url(images/darkbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_pink_fd.css"&gt;');
+        break;
 
-              case "dbrown":
-                $('#cssmain').attr('href', 'css/licogray_brown_fd.css');
-                $('html, body').css('background', 'url(images/darkbg.png)');
-                $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_brown_fd.css"&gt;');
-                break;
-                case "dred":
-                  $('#cssmain').attr('href', 'css/licogray_red_fd.css');
-                  $('html, body').css('background', 'url(images/darkbg.png)');
-                  $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_red_fd.css"&gt;');;
-                  break;
-                  case "dgreen":
-                    $('#cssmain').attr('href', 'css/licogray_green_fd.css');
-                    $('html, body').css('background', 'url(images/darkbg.png)');
-                    $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_green_fd.css"&gt;');
-                    break;
-                    case "dviolet":
-                      $('#cssmain').attr('href', 'css/licogray_violet_fd.css');
-                      $('html, body').css('background', 'url(images/darkbg.png)');
-                      $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_violet_fd.css"&gt;');
-                      break;
+      case "dbrown":
+        $('#cssmain').attr('href', 'css/licogray_brown_fd.css');
+        $('html, body').css('background', 'url(images/darkbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_brown_fd.css"&gt;');
+        break;
+      case "dred":
+        $('#cssmain').attr('href', 'css/licogray_red_fd.css');
+        $('html, body').css('background', 'url(images/darkbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_red_fd.css"&gt;');;
+        break;
+      case "dgreen":
+        $('#cssmain').attr('href', 'css/licogray_green_fd.css');
+        $('html, body').css('background', 'url(images/darkbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_green_fd.css"&gt;');
+        break;
+      case "dviolet":
+        $('#cssmain').attr('href', 'css/licogray_violet_fd.css');
+        $('html, body').css('background', 'url(images/darkbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_violet_fd.css"&gt;');
+        break;
 
-                      case "lyellow":
-                        $('#cssmain').attr('href', 'css/licogray_yellow_fl.css');
-                        $('html, body').css('background', 'url(images/lightbg.png)');
-                        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_yellow_fl.css"&gt;');
-                        break;
-                        case "llime":
-                          $('#cssmain').attr('href', 'css/licogray_lime_fl.css');
-                          $('html, body').css('background', 'url(images/lightbg.png)');
-                          $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_lime_fl.css"&gt;');
-                          break;
-                          case "lblue":
-                            $('#cssmain').attr('href', 'css/licogray_blue_fl.css');
-                            $('html, body').css('background', 'url(images/lightbg.png)');
-                            $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_blue_fl.css"&gt;');
-                            break;
-                            case "lpink":
-                              $('#cssmain').attr('href', 'css/licogray_pink_fl.css');
-                              $('html, body').css('background', 'url(images/lightbg.png)');
-                              $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_pink_fl.css"&gt;');
-                              break;
+      case "lyellow":
+        $('#cssmain').attr('href', 'css/licogray_yellow_fl.css');
+        $('html, body').css('background', 'url(images/lightbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_yellow_fl.css"&gt;');
+        break;
+      case "llime":
+        $('#cssmain').attr('href', 'css/licogray_lime_fl.css');
+        $('html, body').css('background', 'url(images/lightbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_lime_fl.css"&gt;');
+        break;
+      case "lblue":
+        $('#cssmain').attr('href', 'css/licogray_blue_fl.css');
+        $('html, body').css('background', 'url(images/lightbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_blue_fl.css"&gt;');
+        break;
+      case "lpink":
+        $('#cssmain').attr('href', 'css/licogray_pink_fl.css');
+        $('html, body').css('background', 'url(images/lightbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_pink_fl.css"&gt;');
+        break;
 
-                              case "lbrown":
-                                $('#cssmain').attr('href', 'css/licogray_brown_fl.css');
-                                $('html, body').css('background', 'url(images/lightbg.png)');
-                                $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_brown_fl.css"&gt;');
-                                break;
-                                case "lred":
-                                  $('#cssmain').attr('href', 'css/licogray_red_fl.css');
-                                  $('html, body').css('background', 'url(images/lightbg.png)');
-                                  $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_red_fl.css"&gt;');
-                                  break;
-                                  case "lgreen":
-                                    $('#cssmain').attr('href', 'css/licogray_green_fl.css');
-                                    $('html, body').css('background', 'url(images/lightbg.png)');
-                                    $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_green_fl.css"&gt;');
-                                    break;
-                                    case "lviolet":
-                                      $('#cssmain').attr('href', 'css/licogray_violet_fl.css');
-                                      $('html, body').css('background', 'url(images/lightbg.png)');
-                                      $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_violet_fl.css"&gt;');
-                                      break;
+      case "lbrown":
+        $('#cssmain').attr('href', 'css/licogray_brown_fl.css');
+        $('html, body').css('background', 'url(images/lightbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_brown_fl.css"&gt;');
+        break;
+      case "lred":
+        $('#cssmain').attr('href', 'css/licogray_red_fl.css');
+        $('html, body').css('background', 'url(images/lightbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_red_fl.css"&gt;');
+        break;
+      case "lgreen":
+        $('#cssmain').attr('href', 'css/licogray_green_fl.css');
+        $('html, body').css('background', 'url(images/lightbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_green_fl.css"&gt;');
+        break;
+      case "lviolet":
+        $('#cssmain').attr('href', 'css/licogray_violet_fl.css');
+        $('html, body').css('background', 'url(images/lightbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="[YOUR_CSS_DIR]/licogray_violet_fl.css"&gt;');
+        break;
 
-                                      case "test":
-                                        $('#cssmain').attr('href', 'css/licogray_test_fd.css');
-                                        $('html, body').css('background', 'url(images/darkbg.png)');
-                                        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="css/licogray_test_fd.css"&gt;');
-                                        break;
-                                      }
-                                    });
-                                  });
+      case "test":
+        $('#cssmain').attr('href', 'css/licogray_test_fd.css');
+        $('html, body').css('background', 'url(images/darkbg.png)');
+        $('.csscode').html('&lt;link rel="stylesheet" type="text/css" href="css/licogray_test_fd.css"&gt;');
+        break;
+    }
+  });
+}
