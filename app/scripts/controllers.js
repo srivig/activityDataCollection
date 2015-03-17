@@ -13,7 +13,7 @@ angular.module('myDiaryApp.controllers', [])
   $scope.init = function() {
     // loadChartist = new Chartist.Pie('#timeWheel .ct-chart', activityGraph, chartistOptions);
   };
-  var activities = activityObjDummy;
+  // var activities = activityObjDummy;
   var activities = activityObject;
 
   // activities.startTimeFormatted= moment(activities.startTime).format("hh:mma");

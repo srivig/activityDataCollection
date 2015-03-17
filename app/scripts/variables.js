@@ -1,5 +1,5 @@
 var activityObject = [];
-var activityObjDummy = [{"startTime":"2015-03-16 0:00 AM","endTime":"2015-03-16 4:00 AM","startTimeFormatted":"12:39am","activityId":"1","activityLabel":{"title":"Sleep","id":1,"$$hashKey":"object:16"},"today":{"month":"Mar","day":"16","week":"Mo"},"logTime":"2015-03-16T00:40:12+00:00","id":"1ff8444a","$$hashKey":"object:47"},{"startTime":"2015-03-16 4:00 AM","endTime":"2015-03-16 7:00 AM","startTimeFormatted":"12:39am","activityId":"2","activityLabel":{"title":"Work","id":2,"$$hashKey":"object:17"},"today":{"month":"Mar","day":"16","week":"Mo"},"logTime":"2015-03-16T00:40:38+00:00","id":"08bb3962","$$hashKey":"object:48"},{"startTime":"2015-03-16 7:00 AM","endTime":"2015-03-16 8:00 AM","startTimeFormatted":"12:39am","activityId":"3","activityLabel":{"title":"Eat","id":3,"$$hashKey":"object:18"},"today":{"month":"Mar","day":"16","week":"Mo"},"logTime":"2015-03-16T00:40:57+00:00","id":"0af95ee9","$$hashKey":"object:49"},{"startTime":"2015-03-16 10:00 AM","endTime":"2015-03-16 2:00 PM","startTimeFormatted":"12:40am","activityId":"4","activityLabel":{"title":"Sports","id":4,"$$hashKey":"object:19"},"today":{"month":"Mar","day":"16","week":"Mo"},"logTime":"2015-03-16T00:41:11+00:00","id":"03812d12","$$hashKey":"object:50"}]
+var activityObjDummy = [{"startTime":"2015-03-17 0:00 AM","endTime":"2015-03-17 10:30 AM","startTimeFormatted":"02:07am","activityId":"1","activityLabel":{"title":"Sleep","id":1,"icon":"ion-ios-moon-outline","$$hashKey":"object:19"},"today":{"month":"Mar","day":"17","week":"Tu"},"logTime":"2015-03-17T02:08:46+00:00","id":"a2bb9c3d","$$hashKey":"object:39"},{"startTime":"2015-03-17 10:45 AM","endTime":"2015-03-17 6:45 PM","startTimeFormatted":"02:07am","activityId":"2","activityLabel":{"title":"Work","id":2,"icon":"ion-ios-briefcase-outline","$$hashKey":"object:20"},"today":{"month":"Mar","day":"17","week":"Tu"},"logTime":"2015-03-17T02:09:06+00:00","id":"26d4eebd","$$hashKey":"object:44"},{"startTime":"2015-03-17 7:45 PM","endTime":"2015-03-17 10:15 PM","startTimeFormatted":"02:08am","activityId":"5","activityLabel":{"title":"Social activities","id":5,"icon":"ion-ios-people-outline","$$hashKey":"object:23"},"today":{"month":"Mar","day":"17","week":"Tu"},"logTime":"2015-03-17T02:09:24+00:00","id":"ea0c3dcd","$$hashKey":"object:49"}];
 var chartistOptions = {
   donut: true,
   donutWidth: 60,
@@ -18,25 +18,28 @@ var activityGraph = {
 
 var activities = [{
     title: 'Sleep',
-    id: 1
+    id: 1,
+    icon: 'ion-ios-moon-outline'
   }, {
     title: 'Work',
-    id: 2
+    id: 2,
+    icon: 'ion-ios-briefcase-outline'
   }, {
     title: 'Eat',
-    id: 3
+    id: 3,
+    icon: 'ion-ios-nutrition-outline'
   }, {
-    title: 'Sports',
-    id: 4
+    title: 'Physical exercise',
+    id: 4,
+    icon: 'ion-ios-body-outline'
   }, {
-    title: 'With friends',
-    id: 5
+    title: 'Social activities',
+    id: 5,
+    icon: 'ion-ios-people-outline'
   }, {
-    title: 'Party',
-    id: 6
-  }, {
-    title: 'Games',
-    id: 7
+    title: 'Other Relaxation',
+    id: 6,
+    icon: 'ion-ios-flower-outline'
   }
 
 ];
@@ -70,7 +73,7 @@ var createChartistObj = function(d) {
   activityGraph.labels.push("");
   activityGraph.series.push(t);
 
-  loadChartist.update(); // TODO uncomment to update chart on home
+  // loadChartist.update(); // TODO I should test this ...
   // update(activityGraph, chartistOptions);
 }
 

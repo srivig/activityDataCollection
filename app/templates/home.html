@@ -6,21 +6,25 @@
     <script src="scripts/diaryEvents.js"></script>
     <script src="scripts/diaryEventsInit.js"></script>
 
-
-    <!--  -->
-
-    <ion-list>
+    <ion-list class="custom-list-home">
       <div id="diaryEvents" class="_diaryEvents"></div>
       <ion-item ng-repeat="activity in listActivities">
+
         <div class="row">
-          <div class="col col-75"><h2>{{activity.activityLabel.title}}<h2></div>
-          <div class="col">
-            {{activity.startTime}}<br>
-            {{activity.endTime}}
+          <div class="col timePeriod">
+            <span>{{activity.startTime | limitTo:-8 | limitTo:8  }}</span>
+            <i class="icon ion-ios-arrow-thin-right"></i>
+            <span>{{activity.endTime | limitTo:-8 | limitTo:8  }}</span>
           </div>
+          <div class="col activityDetails">
+          <i class="icon {{activity.activityLabel.icon}}"></i>
+          <span>{{activity.activityLabel.title}}<span></div>
+
         </div>
       </ion-item>
     </ion-list>
-    <a id="addNew" href="#/app/activities" class="newHome">+</a>
+
     </ion-content>
+    <div><a id="addNew" href="#/app/activities" class="newHome">+</a></div>
+
 </ion-view>
