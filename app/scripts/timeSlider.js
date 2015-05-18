@@ -1,110 +1,142 @@
 var timePicker = {
-  startTime: "",
-  endTime: "",
-  today: moment().format("YYYY-MM-DD"),
-  defaultStartTime: '0:00 AM',
-  defaultEndTime: '10:00 AM'
+    startTime: "",
+    endTime: "",
+    today: moment().format("YYYY-MM-DD"),
+    defaultStartTime: '0:00 AM',
+    defaultEndTime: '10:00 AM'
 
 }
 
 
-var timeSlider = function() {
-  $("#slider-range").slider({
-    orientation: "vertical",
-    range: true,
-    min: 0,
-    max: 1440,
-    step: 15,
-    values: [840, 1440],
-    create: function() {
-      var _sliderButton = "#time-range .ui-slider-handle.ui-state-default.ui-corner-all",
-        _timeRangeVerticalContainer = "#time-range .ui-slider-vertical",
-        _timeTickContainer = "<div class='timeTickContainer'></div>",
-        _timeTick = "<div class='timeTick'></div>",
-        verticalContainerHeight;
-      _timeTickContainer = $(_timeTickContainer);
-      _timeTick = $(_timeTick);
-      //add cool slider buttons
-      $(_sliderButton).each(function() {
-        var lineHTML = "<div class='sliderButtonLine'></div>",
-          timeHTML = "<div class='sliderButtonTime'></div>";
-        $(this).append($(lineHTML)).append($(timeHTML));
-        $(_timeRangeVerticalContainer).height($(window).height() - 110);
-      });
-      verticalContainerHeight = Math.round($(_timeRangeVerticalContainer).height());
-      _timeTick.height(verticalContainerHeight / 24);
-      //add ticks
-      for (var i = 0; i < 23; i++) {
-        var div = _timeTick.clone();
-        if (i === 12) {
-          div.append('<span class="tickText">12:00 PM</span>');
-          div.width(100);
+var timeSlider = function(startTime, endTime) {
+    if ($("#slider-range").slider("instance") !== undefined) {
+        $("#slider-range").slider("destroy");
+    }
+
+    if (activityObject.length > 0) {
+        startTime = getDuration();
+        endTime = startTime - 300;
+    }
+
+    $("#slider-range").slider({
+        orientation: "vertical",
+        range: true,
+        min: 0,
+        max: 1440,
+        step: 15,
+        values: [endTime, startTime],
+        create: function(e) {
+            var _sliderButton = "#time-range .ui-slider-handle.ui-state-default.ui-corner-all",
+                _timeRangeVerticalContainer = "#time-range .ui-slider-vertical",
+                _timeTickContainer = "<div class='timeTickContainer'></div>",
+                _timeTick = "<div class='timeTick'></div>",
+                verticalContainerHeight,
+                ui,
+                $timeTickContainer = $(_timeTickContainer),
+                $timeTick = $(_timeTick);
+
+            //add cool slider buttons
+            $(_sliderButton).each(function() {
+                var lineHTML = "<div class='sliderButtonLine'></div>",
+                    timeHTML = "<div class='sliderButtonTime'></div>";
+                $(this).append($(lineHTML)).append($(timeHTML));
+                $(_timeRangeVerticalContainer).height($(window).height() - 110);
+            });
+            verticalContainerHeight = Math.round($(_timeRangeVerticalContainer).height());
+            $timeTick.height(verticalContainerHeight / 24);
+
+            //add ticks
+            for (var i = 0; i < 23; i++) {
+                var div = $timeTick.clone();
+                if (i === 12) {
+                    div.append('<span class="tickText">12:00 PM</span>');
+                    div.width(100);
+                }
+                $timeTickContainer.append(div);
+            }
+
+            $(_timeRangeVerticalContainer).prepend($timeTickContainer);
+
+            ui = {
+                values: [endTime, startTime]
+            }
+            setStartTime(ui);
+            setEndTime(ui)
+
+        },
+        slide: function(e, ui) {
+            /*--------Start time ----------*/
+            setStartTime(ui);
+            /*--------End time ----------*/
+            setEndTime(ui)
         }
-        _timeTickContainer.append(div);
-      }
-      $(_timeRangeVerticalContainer).prepend(_timeTickContainer);
-      $($(_sliderButton + " .sliderButtonTime")[1]).text(timePicker.defaultStartTime);
-      $($(_sliderButton + " .sliderButtonTime")[0]).text(timePicker.defaultEndTime);
-      timePicker.startTime = timePicker.today + " " + timePicker.defaultStartTime;
-      timePicker.endTime = timePicker.today + " " + timePicker.defaultEndTime;
+    });
 
-    },
-    slide: function(e, ui) {
-      var hours2,minutes2,hours1,minutes1;
-       /*--------Start time ----------*/
-
-       hours2 = Math.floor((1440 - ui.values[1]) / 60);
-       minutes2 = (1440 - ui.values[1]) - (hours2 * 60);
-      if (hours2.length == 1) hours2 = '0' + hours2;
-      if (minutes2.length == 1) minutes2 = '0' + minutes2;
-      if (minutes2 == 0) minutes2 = '00';
-      if (hours2 >= 12) {
-        if (hours2 == 12) {
-          hours2 = hours2;
-          minutes2 = minutes2 + " PM";
-        } else if (hours2 == 24) {
-          hours2 = 11;
-          minutes2 = "59 PM";
+    function setStartTime(ui) {
+        var startTimeHours, startTimeMinutes,sTime;
+        startTimeHours = Math.floor((1440 - ui.values[1]) / 60);
+        startTimeMinutes = (1440 - ui.values[1]) - (startTimeHours * 60);
+        if (startTimeHours.length == 1) startTimeHours = '0' + startTimeHours;
+        if (startTimeMinutes.length == 1) startTimeMinutes = '0' + startTimeMinutes;
+        if (startTimeMinutes == 0) startTimeMinutes = '00';
+        if (startTimeHours >= 12) {
+            if (startTimeHours == 12) {
+                startTimeHours = startTimeHours;
+                startTimeMinutes = startTimeMinutes + " PM";
+            } else if (startTimeHours == 24) {
+                startTimeHours = 11;
+                startTimeMinutes = "59 PM";
+            } else {
+                startTimeHours = startTimeHours - 12;
+                startTimeMinutes = startTimeMinutes + " PM";
+            }
         } else {
-          hours2 = hours2 - 12;
-          minutes2 = minutes2 + " PM";
+            startTimeHours = startTimeHours;
+            startTimeMinutes = startTimeMinutes + " AM";
         }
-      } else {
-        hours2 = hours2;
-        minutes2 = minutes2 + " AM";
-      }
-      var sTime = hours2 + ':' + minutes2;
-      $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime")[1]).text(hours2 + ':' + minutes2);
-      timePicker.startTime = timePicker.today + " " + sTime;
 
-/*--------End time ----------*/
-       hours1 = Math.floor((1440 - ui.values[0]) / 60);
-       minutes1 = (1440 - ui.values[0]) - (hours1 * 60);
-      if (hours1.length == 1) hours1 = '0' + hours1;
-      if (minutes1.length == 1) minutes1 = '0' + minutes1;
-      if (minutes1 == 0) minutes1 = '00';
-      if (hours1 >= 12) {
-        if (hours1 == 12) {
-          hours1 = hours1;
-          minutes1 = minutes1 + " PM";
-        } else {
-          hours1 = hours1 - 12;
-          minutes1 = minutes1 + " PM";
-        }
-      } else {
-        hours1 = hours1;
-        minutes1 = minutes1 + " AM";
-      }
-      if (hours1 == 0) {
-        hours1 = 12;
-        minutes1 = minutes1;
-      }
+        sTime = startTimeHours + ':' + startTimeMinutes;
+        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime")[1]).text(startTimeHours + ':' + startTimeMinutes);
+        timePicker.startTime = timePicker.today + " " + sTime;
 
-      $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime")[0]).text(hours1 + ':' + minutes1);
-      var eTime = (hours1 + ':' + minutes1);
-      timePicker.endTime = timePicker.today + " " + eTime;
 
     }
-  });
 
+    function setEndTime(ui) {
+        var endTimeHours, endTimeMinutes,eTime;
+
+        endTimeHours = Math.floor((1440 - ui.values[0]) / 60);
+        endTimeMinutes = (1440 - ui.values[0]) - (endTimeHours * 60);
+        if (endTimeHours.length == 1) endTimeHours = '0' + endTimeHours;
+        if (endTimeMinutes.length == 1) endTimeMinutes = '0' + endTimeMinutes;
+        if (endTimeMinutes == 0) endTimeMinutes = '00';
+        if (endTimeHours >= 12) {
+            if (endTimeHours == 12) {
+                endTimeHours = endTimeHours;
+                endTimeMinutes = endTimeMinutes + " PM";
+            } else {
+                endTimeHours = endTimeHours - 12;
+                endTimeMinutes = endTimeMinutes + " PM";
+            }
+        } else {
+            endTimeHours = endTimeHours;
+            endTimeMinutes = endTimeMinutes + " AM";
+        }
+        if (endTimeHours == 0) {
+            endTimeHours = 12;
+            endTimeMinutes = endTimeMinutes;
+        }
+
+        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime")[0]).text(endTimeHours + ':' + endTimeMinutes);
+        eTime = (endTimeHours + ':' + endTimeMinutes);
+        timePicker.endTime = timePicker.today + " " + eTime;
+    }
+
+    function getDuration() {
+      var duration,lastEndTime,midNight;
+        lastEndTime = activityObject[activityObject.length - 1].endTime;
+        midNight = moment().format("YYYY-MM-DD 12:00") + " AM";
+        duration = moment.duration(moment(lastEndTime).diff(moment(midNight)));
+        return 1440 - Math.round(duration.asMinutes() / 10) * 10;
+    }
 }
