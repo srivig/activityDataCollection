@@ -169,6 +169,8 @@
 #diaryEvents.actPageStyle #lceditem > #lcedcapt.nowdate{
   font-size: 1.3em;
   width: 200px;
+  margin-top: -25px;
+  padding-top: 25px;
 }
 #diaryEvents.actPageStyle #lceditem > #lcedbody.nowdate{
   font-size: 2em;
