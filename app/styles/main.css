@@ -12,10 +12,10 @@ span {
   /*font-family: tahoma, verdana;*/ }
 
 .scroll-content {
-  background-image: url(/images/background.png); }
+  background-image: url("/images/background.png"); }
 
 .clickHereImg {
-  background-image: url(../images/click-here.png); }
+  background-image: url("../images/click-here.png"); }
 
 #diaryEvents {
   width: 100%; }
@@ -99,60 +99,49 @@ label[for*=violet]:before {
   box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
   text-decoration: none; }
 
-#addNew.newHome {
+#addNew.newHome,
+#buttonTick {
+  background: #e0012a;
+  /*#f44f6d;*/
+  -webkit-box-shadow: 0 10px 23px -4px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 0 10px 23px -4px rgba(0, 0, 0, 0.41);
+  box-shadow: 0 10px 23px -4px rgba(0, 0, 0, 0.41);
+  -webkit-transition: border 0.25s linear,color 0.25s linear,background-color 0.25s linear;
+  transition: border 0.25s linear,color 0.25s linear,background-color 0.25s linear;
+  -webkit-font-smoothing: subpixel-antialiased;
+  color: #fff;
+  z-index: 99999;
   border-radius: 50%;
   width: 50px;
-  height: 50px;
-  background: #CC0000;
-  /*#f44f6d;*/
+  height: 50px; }
+  #addNew.newHome:hover,
+  #buttonTick:hover {
+    background: #f46; }
+  #addNew.newHome:active, #addNew.newHome:focus,
+  #buttonTick:active,
+  #buttonTick:focus {
+    background: #d80129; }
+
+#addNew.newHome {
   position: absolute;
-  padding: 12px;
+  padding: 14px;
   text-align: center;
   bottom: 2%;
   left: 50%;
   margin-left: -25px;
   top: inherit;
-  color: #fff;
-  z-index: 99999;
   font-size: 2.5em;
-  -webkit-box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
-  -moz-box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
-  box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
-  text-decoration: none;
-  -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
-  transition: border .25s linear,color .25s linear,background-color .25s linear;
-  -webkit-font-smoothing: subpixel-antialiased; }
-  #addNew.newHome:hover {
-    background: #FF0000; }
-  #addNew.newHome:active, #addNew.newHome:focus {
-    background: #960000; }
+  text-decoration: none; }
 
 #buttonTick {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  background: #CC0000;
-  /*#f44f6d;*/
   position: absolute;
   padding: 12px;
   text-align: center;
   top: 54%;
   left: 42%;
-  color: #fff;
-  z-index: 99999;
   font-size: 1.5em;
-  -webkit-box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
-  -moz-box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
-  box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
   text-decoration: none;
-  border: 0;
-  -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
-  transition: border .25s linear,color .25s linear,background-color .25s linear;
-  -webkit-font-smoothing: subpixel-antialiased; }
-  #buttonTick:hover {
-    background: #FF0000; }
-  #buttonTick:active, #buttonTick:focus {
-    background: #960000; }
+  border: 0; }
 
 .actButtonPos {
   position: absolute;
@@ -201,11 +190,11 @@ label.activityPageLabel {
 #time-range-bottom {
   position: absolute;
   height: 60px;
-  background: #FF6682;
+  background: #ff6682;
   width: 200px;
   bottom: -60px;
   z-index: 99;
-  box-shadow: -8px 0px 8px 8px rgba(0, 0, 0, 0.09); }
+  box-shadow: -8px 0 8px 8px rgba(0, 0, 0, 0.09); }
 
 #time-range {
   width: 310px;
@@ -213,7 +202,7 @@ label.activityPageLabel {
   margin-left: -1px;
   margin-bottom: 30px; }
   #time-range .timeTickContainer {
-    background: #FA9EAF;
+    background: #fa9eaf;
     padding-bottom: 20px; }
   #time-range p {
     font-size: 14px;
@@ -221,19 +210,20 @@ label.activityPageLabel {
   #time-range .ui-corner-all {
     border-radius: 0; }
   #time-range .time-2 {
-    margin-left: -155%;
+    margin-left: -172%;
     position: absolute;
     left: -100%;
-    font-size: 14px;
+    font-size: 20px;
     z-index: 999;
     background: #fff;
     color: #5c5c5c;
-    padding: 0px 4px;
+    padding: 5px 0px;
     border-radius: 5px;
-    width: 75px;
-    -webkit-box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
-    -moz-box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
-    box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41); }
+    width: 107px;
+    top: 24px;
+    -webkit-box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
+    box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41); }
   #time-range .time21 {
     margin-top: -20px; }
   #time-range .time22 {
@@ -243,7 +233,7 @@ label.activityPageLabel {
     width: 250px;
     left: -250px;
     border-top: 1px solid #e7e6e6;
-    top: 10px; }
+    top: 18px; }
   #time-range .timeTick {
     width: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.37);
@@ -260,7 +250,7 @@ label.activityPageLabel {
     margin-bottom: -24px; }
 
 .ui-widget-content {
-  background: #FA9EAF; }
+  background: #fa9eaf; }
 
 .ui-slider-vertical {
   width: 202px;
@@ -270,26 +260,26 @@ label.activityPageLabel {
     left: 15.7em;
     width: 72px;
     margin-left: 0;
-    margin-bottom: -34px;
-    height: 20px;
-    padding: 1px;
+    margin-bottom: -40px;
+    height: 35px;
+    padding: 5px;
     text-align: center;
     background: #ff6682;
     border: 0;
-    -webkit-box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
-    -moz-box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
-    box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
+    -webkit-box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
+    box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
     color: #fff;
-    -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
-    transition: border .25s linear,color .25s linear,background-color .25s linear;
+    -webkit-transition: border 0.25s linear,color 0.25s linear,background-color 0.25s linear;
+    transition: border 0.25s linear,color 0.25s linear,background-color 0.25s linear;
     -webkit-font-smoothing: subpixel-antialiased;
     border-radius: 50px !important;
     cursor: ns-resize;
     font-weight: normal; }
     .ui-slider-vertical .ui-slider-handle:hover {
-      background: #FF8CA1; }
+      background: #ff8ca1; }
     .ui-slider-vertical .ui-slider-handle:active, .ui-slider-vertical .ui-slider-handle:focus {
-      background: #FC3D60; }
+      background: #fc3d60; }
 
 .custom-list ion-item a {
   font-size: 1.4em;
@@ -304,7 +294,7 @@ label.activityPageLabel {
   float: left; }
 
 .custom-list-home .activityDetails {
-  padding: 22px 0px 0px 20px; }
+  padding: 22px 0 0 20px; }
 .custom-list-home .timePeriod {
   max-width: 75px; }
   .custom-list-home .timePeriod span {
