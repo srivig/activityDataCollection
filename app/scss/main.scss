@@ -251,18 +251,21 @@ label.activityPageLabel {
   .ui-corner-all {
     border-radius: 0;
   }
+  .time-1 {
+  font-size: 25px;
+}
   .time-2 {
     margin-left: -172%;
-position: absolute;
-left: -100%;
-font-size: 20px;
-z-index: 999;
-background: #fff;
-color: #5c5c5c;
-padding: 5px 0px;
-border-radius: 5px;
-width: 107px;
-top:24px;
+      position: absolute;
+      left: -100%;
+      font-size: 16px;
+      z-index: 999;
+      background: #fff;
+      color: #5c5c5c;
+      padding: 1px 0px;
+      border-radius: 5px;
+      width: 107px;
+      top: 22px;
     -webkit-box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
     -moz-box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
     box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
@@ -278,7 +281,7 @@ top:24px;
     width: 250px;
     left: -250px;
     border-top: 1px solid #e7e6e6;
-    top: 18px;
+    top: 13px;
   }
   .timeTick {
     width: 20px;
@@ -311,9 +314,9 @@ top:24px;
     left: 15.7em;
     width: 72px;
     margin-left: 0;
-    margin-bottom: -40px;
-    height: 35px;
-    padding: 5px;
+    margin-bottom: -36px;
+    height: 25px;
+    padding: 0px;
     text-align: center;
     background: #ff6682;
     border: 0;
