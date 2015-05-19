@@ -181,7 +181,7 @@ label.activityPageLabel {
     fill: #fff;
     font-weight: bold; }
 
-/*-----vendor------*/
+/*-----customized vendor components------*/
 #time-range-bottom {
   position: absolute;
   height: 60px;
