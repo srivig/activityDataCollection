@@ -210,7 +210,7 @@ label.activityPageLabel {
   #time-range .ui-corner-all {
     border-radius: 0; }
   #time-range .time-1 {
-    font-size: 25px; }
+    font-size: 22px; }
   #time-range .time-2 {
     margin-left: -172%;
     position: absolute;
@@ -264,7 +264,7 @@ label.activityPageLabel {
     margin-left: 0;
     margin-bottom: -36px;
     height: 25px;
-    padding: 0px;
+    padding: 2px;
     text-align: center;
     background: #ff6682;
     border: 0;
