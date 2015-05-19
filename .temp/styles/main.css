@@ -213,16 +213,17 @@ label.activityPageLabel {
   #time-range .ui-corner-all {
     border-radius: 0; }
   #time-range .time-2 {
-    margin-left: -65%;
+    margin-left: -155%;
     position: absolute;
     left: -100%;
-    font-size: 9px;
+    font-size: 14px;
     z-index: 999;
     background: #fff;
-    color: #C00;
+    color: #5c5c5c;
     padding: 0px 4px;
     border-radius: 5px;
-    width: 55px; }
+    width: 75px;
+    box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41); }
   #time-range .time21 {
     margin-top: -20px; }
   #time-range .time22 {
@@ -232,7 +233,7 @@ label.activityPageLabel {
     width: 250px;
     left: -250px;
     border-top: 1px solid #e7e6e6;
-    top: 23px; }
+    top: 10px; }
   #time-range .timeTick {
     width: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.37);
@@ -257,15 +258,15 @@ label.activityPageLabel {
   padding-top: 24px; }
   .ui-slider-vertical .ui-slider-handle {
     left: 15.7em;
-    width: 104px;
+    width: 72px;
     margin-left: 0;
-    margin-bottom: -47px;
-    height: 46px;
-    padding: 14px;
+    margin-bottom: -34px;
+    height: 20px;
+    padding: 1px;
     text-align: center;
     background: #ff6682;
     border: 0;
-    box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.41);
+    box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
     color: #fff;
     transition: border .25s linear,color .25s linear,background-color .25s linear;
     -webkit-font-smoothing: subpixel-antialiased;

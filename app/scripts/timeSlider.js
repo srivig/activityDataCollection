@@ -40,7 +40,7 @@ var timeSlider = function(startTime, endTime) {
             c=1;
             $(_sliderButton).each(function() {
                 var lineHTML = "<div class='sliderButtonLine'></div>",
-                    time1HTML = "<div class='sliderButtonTime time-1'></div>";
+                    time1HTML = "<div class='sliderButtonTime time-1'><i class='ion-drag'></i></div>";
                     time2HTML = "<div class='sliderButtonTime time-2 time2"+c+"'></div>";
 
                 $(this).append($(lineHTML)).append($(time1HTML));
@@ -103,7 +103,7 @@ var timeSlider = function(startTime, endTime) {
         }
 
         sTime = startTimeHours + ':' + startTimeMinutes;
-        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-1")[1]).text(startTimeHours + ':' + startTimeMinutes);
+        // $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-1")[1]).text(startTimeHours + ':' + startTimeMinutes);
         $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-2")[1]).text(startTimeHours + ':' + startTimeMinutes);
 
         timePicker.startTime = timePicker.today + " " + sTime;
@@ -136,7 +136,7 @@ var timeSlider = function(startTime, endTime) {
             endTimeMinutes = endTimeMinutes;
         }
 
-        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-1")[0]).text(endTimeHours + ':' + endTimeMinutes);
+        // $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-1")[0]).text(endTimeHours + ':' + endTimeMinutes);
         $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-2")[0]).text(endTimeHours + ':' + endTimeMinutes);
         eTime = (endTimeHours + ':' + endTimeMinutes);
         timePicker.endTime = timePicker.today + " " + eTime;

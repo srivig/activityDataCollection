@@ -266,16 +266,19 @@ label.activityPageLabel {
     border-radius: 0;
   }
   .time-2{
-    margin-left: -65%;
-    position: absolute;
-    left: -100%;
-    font-size: 9px;
-    z-index: 999;
-    background: #fff;
-    color: #C00;
-    padding: 0px 4px;
-    border-radius: 5px;
-    width: 55px;
+      margin-left: -155%;
+      position: absolute;
+      left: -100%;
+      font-size: 14px;
+      z-index: 999;
+      background: #fff;
+      color: #5c5c5c;
+      padding: 0px 4px;
+      border-radius: 5px;
+      width: 75px;
+      -webkit-box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
+      -moz-box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
+      box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
   }
   .time21{
     margin-top: -20px;
@@ -288,7 +291,7 @@ label.activityPageLabel {
     width: 250px;
     left: -250px;
     border-top: 1px solid #e7e6e6;
-    top: 23px;
+    top: 10px;
   }
   .timeTick {
     width: 20px;
@@ -319,17 +322,17 @@ label.activityPageLabel {
   padding-top: 24px;
   .ui-slider-handle {
     left: 15.7em;
-    width: 104px;
+    width: 72px;
     margin-left: 0;
-    margin-bottom: -47px;
-    height: 46px;
-    padding: 14px;
+    margin-bottom: -34px;
+    height: 20px;
+    padding: 1px;
     text-align: center;
     background: #ff6682;
     border: 0;
-    -webkit-box-shadow:  0px 10px 23px -8px rgba(0, 0, 0, 0.41);
-    -moz-box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.41);
-    box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.41);
+    -webkit-box-shadow:  0px 10px 8px -8px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
+    box-shadow: 0px 10px 8px -8px rgba(0, 0, 0, 0.41);
     color: #fff;
     -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
     transition: border .25s linear,color .25s linear,background-color .25s linear;
@@ -343,20 +346,6 @@ label.activityPageLabel {
     &:active,&:focus{
       background:#FC3D60;
     }
-    // &:after {
-    //   right: 100%;
-    //   top: 50%;
-    //   border: solid transparent;
-    //   content: " ";
-    //   height: 0;
-    //   width: 0;
-    //   position: absolute;
-    //   pointer-events: none;
-    //   border-color: rgba(255, 102, 130, 0);
-    //   border-right-color: #ff6682;
-    //   border-width: 23px;
-    //   margin-top: -23px;
-    // }
   }
 
 }
