@@ -4,20 +4,15 @@ body {
   margin: 0;
   padding: 0;
   border-color: #b2b2b2;
-  background-color: #f8f8f8;
-  background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
-  }
+  background-color: #f8f8f8; }
 
 td,
 body,
 span {
   /*font-family: tahoma, verdana;*/ }
 
-
-  .scroll-content {
-      background: url(../images/background.png) ;
-
-    }
+.scroll-content {
+  background-image: url(/images/background.png); }
 
 .clickHereImg {
   background-image: url(../images/click-here.png); }
@@ -108,9 +103,10 @@ label[for*=violet]:before {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  background: #f44f6d;
+  background: #CC0000;
+  /*#f44f6d;*/
   position: absolute;
-  padding: 16px 14px;
+  padding: 12px;
   text-align: center;
   bottom: 2%;
   left: 50%;
@@ -119,16 +115,24 @@ label[for*=violet]:before {
   color: #fff;
   z-index: 99999;
   font-size: 2.5em;
-  -webkit-box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
-  -moz-box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
-  box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
-  text-decoration: none; }
+  -webkit-box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
+  text-decoration: none;
+  -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
+  transition: border .25s linear,color .25s linear,background-color .25s linear;
+  -webkit-font-smoothing: subpixel-antialiased; }
+  #addNew.newHome:hover {
+    background: #FF0000; }
+  #addNew.newHome:active, #addNew.newHome:focus {
+    background: #960000; }
 
 #buttonTick {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  background: #f44f6d;
+  background: #CC0000;
+  /*#f44f6d;*/
   position: absolute;
   padding: 12px;
   text-align: center;
@@ -137,17 +141,24 @@ label[for*=violet]:before {
   color: #fff;
   z-index: 99999;
   font-size: 1.5em;
-  -webkit-box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
-  -moz-box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
-  box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
+  -webkit-box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 10px 23px -4px rgba(0, 0, 0, 0.41);
   text-decoration: none;
-  border: 0; }
+  border: 0;
+  -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
+  transition: border .25s linear,color .25s linear,background-color .25s linear;
+  -webkit-font-smoothing: subpixel-antialiased; }
+  #buttonTick:hover {
+    background: #FF0000; }
+  #buttonTick:active, #buttonTick:focus {
+    background: #960000; }
 
 .actButtonPos {
   position: absolute;
-  bottom: 100px;
+  bottom: 15px;
   z-index: 9;
-  left: 80%; }
+  left: 84%; }
 
 ion-view.pane {
   /*background-image: url(../images/ricepaper2.png);*/
@@ -187,18 +198,46 @@ label.activityPageLabel {
     font-weight: bold; }
 
 /*-----vendor------*/
+#time-range-bottom {
+  position: absolute;
+  height: 60px;
+  background: #FF6682;
+  width: 200px;
+  bottom: -60px;
+  z-index: 99;
+  box-shadow: -8px 0px 8px 8px rgba(0, 0, 0, 0.09); }
+
 #time-range {
   width: 310px;
   margin-top: 18px;
-  margin-left: -1px; }
+  margin-left: -1px;
+  margin-bottom: 30px; }
+  #time-range .timeTickContainer {
+    background: #FA9EAF;
+    padding-bottom: 20px; }
   #time-range p {
     font-size: 14px;
     color: #333; }
   #time-range .ui-corner-all {
     border-radius: 0; }
+  #time-range .time-2 {
+    margin-left: -65%;
+    position: absolute;
+    left: -100%;
+    font-size: 9px;
+    z-index: 999;
+    background: #fff;
+    color: #C00;
+    padding: 0px 4px;
+    border-radius: 5px;
+    width: 55px; }
+  #time-range .time21 {
+    margin-top: -20px; }
+  #time-range .time22 {
+    margin-top: -20px; }
   #time-range .sliderButtonLine {
     position: absolute;
-    width: 230px;
+    width: 250px;
     left: -250px;
     border-top: 1px solid #e7e6e6;
     top: 23px; }
@@ -214,37 +253,40 @@ label.activityPageLabel {
     width: 85px;
     color: rgba(255, 255, 255, 0.51);
     font-size: 16px; }
+  #time-range .ui-slider-range.ui-widget-header.ui-corner-all {
+    margin-bottom: -24px; }
 
 .ui-widget-content {
-  background: #ff6682; }
+  background: #FA9EAF; }
 
 .ui-slider-vertical {
-  width: 202px; }
+  width: 202px;
+  height: 95%;
+  padding-top: 24px; }
   .ui-slider-vertical .ui-slider-handle {
     left: 15.7em;
     width: 104px;
     margin-left: 0;
-    margin-bottom: -23px;
+    margin-bottom: -47px;
     height: 46px;
     padding: 14px;
     text-align: center;
     background: #ff6682;
     border: 0;
-    box-shadow: -5px 1px 12px 1px rgba(0, 0, 0, 0.19);
-    color: #fff; }
-    .ui-slider-vertical .ui-slider-handle:after {
-      right: 100%;
-      top: 50%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-color: rgba(255, 102, 130, 0);
-      border-right-color: #ff6682;
-      border-width: 23px;
-      margin-top: -23px; }
+    -webkit-box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.41);
+    box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.41);
+    color: #fff;
+    -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
+    transition: border .25s linear,color .25s linear,background-color .25s linear;
+    -webkit-font-smoothing: subpixel-antialiased;
+    border-radius: 50px !important;
+    cursor: ns-resize;
+    font-weight: normal; }
+    .ui-slider-vertical .ui-slider-handle:hover {
+      background: #FF8CA1; }
+    .ui-slider-vertical .ui-slider-handle:active, .ui-slider-vertical .ui-slider-handle:focus {
+      background: #FC3D60; }
 
 .custom-list ion-item a {
   font-size: 1.4em;

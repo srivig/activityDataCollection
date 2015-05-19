@@ -33,20 +33,27 @@ var timeSlider = function(startTime, endTime) {
                 verticalContainerHeight,
                 ui,
                 $timeTickContainer = $(_timeTickContainer),
-                $timeTick = $(_timeTick);
+                $timeTick = $(_timeTick),
+                c;
 
             //add cool slider buttons
+            c=1;
             $(_sliderButton).each(function() {
                 var lineHTML = "<div class='sliderButtonLine'></div>",
-                    timeHTML = "<div class='sliderButtonTime'></div>";
-                $(this).append($(lineHTML)).append($(timeHTML));
-                $(_timeRangeVerticalContainer).height($(window).height() - 110);
+                    time1HTML = "<div class='sliderButtonTime time-1'></div>";
+                    time2HTML = "<div class='sliderButtonTime time-2 time2"+c+"'></div>";
+
+                $(this).append($(lineHTML)).append($(time1HTML));
+                $(this).append($(lineHTML)).append($(time2HTML));
+                c++;
             });
+            $(_timeRangeVerticalContainer).height($(window).height() - 204);
             verticalContainerHeight = Math.round($(_timeRangeVerticalContainer).height());
-            $timeTick.height(verticalContainerHeight / 24);
+
+            $timeTick.height((verticalContainerHeight+24) / 24);
 
             //add ticks
-            for (var i = 0; i < 23; i++) {
+            for (var i = 0; i <= 23; i++) {
                 var div = $timeTick.clone();
                 if (i === 12) {
                     div.append('<span class="tickText">12:00 PM</span>');
@@ -96,7 +103,9 @@ var timeSlider = function(startTime, endTime) {
         }
 
         sTime = startTimeHours + ':' + startTimeMinutes;
-        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime")[1]).text(startTimeHours + ':' + startTimeMinutes);
+        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-1")[1]).text(startTimeHours + ':' + startTimeMinutes);
+        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-2")[1]).text(startTimeHours + ':' + startTimeMinutes);
+
         timePicker.startTime = timePicker.today + " " + sTime;
 
 
@@ -127,7 +136,8 @@ var timeSlider = function(startTime, endTime) {
             endTimeMinutes = endTimeMinutes;
         }
 
-        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime")[0]).text(endTimeHours + ':' + endTimeMinutes);
+        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-1")[0]).text(endTimeHours + ':' + endTimeMinutes);
+        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-2")[0]).text(endTimeHours + ':' + endTimeMinutes);
         eTime = (endTimeHours + ':' + endTimeMinutes);
         timePicker.endTime = timePicker.today + " " + eTime;
     }
