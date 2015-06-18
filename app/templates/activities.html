@@ -1,8 +1,10 @@
 <ion-view view-title="Activities">
   <ion-content>
-    <ion-list>
+    <ion-list class="custom-list">
       <ion-item ng-repeat="activity in activities" href="#/app/activities/{{activity.id}}">
-        {{activity.title}}
+        <i class="icon {{activity.icon}}"></i>
+
+        <span>{{activity.title}}</span>
       </ion-item>
     </ion-list>
   </ion-content>

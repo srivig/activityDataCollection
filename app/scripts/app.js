@@ -1,22 +1,9 @@
-// Ionic Starter App
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
+var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers', 'myDiaryApp.services', 'chart.js'])
 
+.run(function($ionicPlatform) {
 
-var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers', 'UserApp','chart.js'])
-
-.run(function($ionicPlatform, user) {
   $ionicPlatform.ready(function() {
-
-    // user.init({
-    //   appId: '54e3f3d8f275b'
-    // });
-
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
@@ -37,50 +24,61 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
     controller: 'AppCtrl'
   })
 
-  .state('login', {
+  .state('auth', {
+    url: "/auth",
+    abstract: true,
+    templateUrl: "templates/auth.html"
+  })
+
+  .state('auth.login', {
     url: '/login',
-    templateUrl: 'templates/login.html',
-    data: {
-      login: false
+    views: {
+      'login': {
+        templateUrl: 'templates/login.html',
+        controller: 'SignInCtrl'
+      }
     }
   })
 
-  .state('signup', {
-    url: '/signup',
-    templateUrl: 'templates/signup.html',
-    data: {
-      public: true
+  .state('auth.signup', {
+      url: '/signup',
+      views: {
+        'signup': {
+          templateUrl: 'templates/signup.html',
+          controller: 'SignUpCtrl'
+        }
+      }
+    })
+
+  .state('app.activities', {
+    url: "/activities",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/activities.html",
+        controller: 'ActivitiesCtrl'
+      }
     }
   })
 
-    .state('app.activities', {
-      url: "/activities",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/activities.html",
-          controller: 'ActivitiesCtrl'
-        }
+  .state('app.home', {
+    url: "/home",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/home.html",
+        controller: 'HomeCtrl'
       }
-    })
+    }
+  })
 
-    .state('app.home', {
-      url: "/home",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/home.html",
-          controller: 'HomeCtrl'
-        }
+  .state('app.chart', {
+    url: "/chart",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/chart.html",
+        controller: 'HomeCtrl'
       }
-    })
-    .state('app.home2', {
-      url: "/home2",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/home2.html",
-          controller: 'HomeCtrl'
-        }
-      }
-    })
+    }
+  })
 
   .state('app.activity', {
     url: "/activities/:activityId",
@@ -93,5 +91,5 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/auth/login');
 });

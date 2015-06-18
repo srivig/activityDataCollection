@@ -1,3 +1,3 @@
-var generateGraph = function() {
-
-}
+$(document).ready(function(){
+  loadChartist = new Chartist.Pie('#timeWheel .ct-chart', activityGraph, chartistOptions);
+})
