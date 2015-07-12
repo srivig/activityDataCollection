@@ -13,6 +13,11 @@ angular.module('myDiaryApp.services', [])
     $rootScope.hide = function() {
       $ionicLoading.hide();
     };
+    $rootScope.authenticate = {
+      /*if (!$rootScope.isSessionActive()) {
+          $window.location.href = ('#/login');
+      } */
+    };
     $rootScope.logout = function() {
       $rootScope.setToken("");
       $window.location.href = '#/auth/login';

@@ -1,15 +1,21 @@
 angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicSideMenuDelegate) {
+.controller('AppCtrl', function($scope, $rootScope,API,$ionicModal, $timeout, $ionicSideMenuDelegate, $window) {
   //TODO init functions...
   $ionicSideMenuDelegate.edgeDragThreshold(0);
 })
 
-.controller('ActivitiesCtrl', function($scope) {
+.controller('ActivitiesCtrl', function($rootScope,API,$scope, $window) {
+  if (!$rootScope.isSessionActive()) {
+      $window.location.href = ('#/login');
+  }
   $scope.activities = activities;
 })
 
-.controller('HomeCtrl', function($scope) {
+.controller('HomeCtrl', function($rootScope,API,$scope, $window) {
+  if (!$rootScope.isSessionActive()) {
+      $window.location.href = ('#/login');
+  }
   $scope.init = function() {
     // loadChartist = new Chartist.Pie('#timeWheel .ct-chart', activityGraph, chartistOptions);
   };
@@ -96,7 +102,10 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
     }
 })
 
-.controller('ActivityCtrl', function($scope, $stateParams, $state, $ionicHistory) {
+.controller('ActivityCtrl', function($scope,$rootScope,API, $stateParams, $state, $ionicHistory, $window) {
+  if (!$rootScope.isSessionActive()) {
+      $window.location.href = ('#/login');
+  }
   var d = new Date();
   var month = d.getMonth() + 1;
   var day = d.getDate();
