@@ -2,7 +2,7 @@ module.exports = function(server, db) {
   db.activityData.insert( { item: "buhahhahaah", token: "buhahha@gmail.com",  user: "buhahha@gmail.com", created:12121212, updated: 23223874, isCompleted: false} )
 
   var validateRequest = require("../auth/validateRequest");
-  server.get("/api/v1/activityData/data/list", function(req, res, next) {
+  server.get("/api/v1/mydiaryapp/activityData/data/list", function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
       db.activityData.find({
         user: req.params.token
@@ -15,7 +15,7 @@ module.exports = function(server, db) {
     });
     return next();
   });
-  server.get('/api/v1/activityData/data/item/:id', function(req, res, next) {
+  server.get('/api/v1/mydiaryapp/activityData/data/item/:id', function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
       db.activityData.find({
         _id: db.ObjectId(req.params.id)
@@ -28,7 +28,7 @@ module.exports = function(server, db) {
     });
     return next();
   });
-  server.post('/api/v1/activityData/data/item', function(req, res, next) {
+  server.post('/api/v1/mydiaryapp/activityData/data/item', function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
       var item = req.params;
       console.log(item);
@@ -44,7 +44,7 @@ module.exports = function(server, db) {
     });
     return next();
   });
-  server.put('/api/v1/activityData/data/item/:id', function(req, res, next) {
+  server.put('/api/v1/mydiaryapp/activityData/data/item/:id', function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
       db.activityData.findOne({
         _id: db.ObjectId(req.params.id)
@@ -73,7 +73,7 @@ module.exports = function(server, db) {
     });
     return next();
   });
-  server.del('/api/v1/activityData/data/item/:id', function(req, res, next) {
+  server.del('/api/v1/mydiaryapp/activityData/data/item/:id', function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
       db.activityData.remove({
         _id: db.ObjectId(req.params.id)
