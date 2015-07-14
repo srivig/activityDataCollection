@@ -13,6 +13,11 @@ angular.module('myDiaryApp.services', [])
     $rootScope.hide = function() {
       $ionicLoading.hide();
     };
+    $rootScope.authenticate = {
+      /*if (!$rootScope.isSessionActive()) {
+          $window.location.href = ('#/login');
+      } */
+    };
     $rootScope.logout = function() {
       $rootScope.setToken("");
       $window.location.href = '#/auth/login';
@@ -46,8 +51,17 @@ angular.module('myDiaryApp.services', [])
       signup: function(form) {
         return $http.post(base + '/api/v1/mydiaryapp/auth/register', form);
       },
-      getAll: function(email) {
-        return $http.get(base + '/api/v1/myDiaryAppData/data/list', {
+      getAll: function(email,startDate) {
+        return $http.get(base + '/api/v1/mydiaryapp/activityData/data/list', {
+          method: 'GET',
+          params: {
+            token: email,
+            startDate: startDate
+          }
+        });
+      },
+      getDates: function(email) {
+        return $http.get(base + '/api/v1/mydiaryapp/activityData/data/datesWithData', {
           method: 'GET',
           params: {
             token: email
@@ -55,7 +69,7 @@ angular.module('myDiaryApp.services', [])
         });
       },
       getOne: function(id, email) {
-        return $http.get(base + '/api/v1/myDiaryAppData/data/item/' + id, {
+        return $http.get(base + '/api/v1/mydiaryapp/activityData/data/item/' + id, {
           method: 'GET',
           params: {
             token: email
@@ -63,7 +77,7 @@ angular.module('myDiaryApp.services', [])
         });
       },
       saveItem: function(form, email) {
-        return $http.post(base + '/api/v1/myDiaryAppData/data/item', form, {
+        return $http.post(base + '/api/v1/mydiaryapp/activityData/data/item', form, {
           method: 'POST',
           params: {
             token: email
@@ -71,7 +85,7 @@ angular.module('myDiaryApp.services', [])
         });
       },
       putItem: function(id, form, email) {
-        return $http.put(base + '/api/v1/myDiaryAppData/data/item/' + id, form, {
+        return $http.put(base + '/api/v1/mydiaryapp/activityData/data/item/' + id, form, {
           method: 'PUT',
           params: {
             token: email
@@ -79,7 +93,7 @@ angular.module('myDiaryApp.services', [])
         });
       },
       deleteItem: function(id, email) {
-        return $http.delete(base + '/api/v1/myDiaryAppData/data/item/' + id, {
+        return $http.delete(base + '/api/v1/mydiaryapp/activityData/data/item/' + id, {
           method: 'DELETE',
           params: {
             token: email

@@ -1,9 +1,11 @@
 module.exports = function(server, db) {
+
   var validateRequest = require("../auth/validateRequest");
-  server.get("/api/v1/myDiaryAppData/data/list", function(req, res, next) {
+  server.get("/api/v1/mydiaryapp/activityData/data/list", function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
-      db.myDiaryAppData.find({
-        user: req.params.token
+      db.activityData.find({
+        user: req.params.token,
+        startDate: req.params.startDate
       }, function(err, list) {
         res.writeHead(200, {
           'Content-Type': 'application/json; charset=utf-8'
@@ -13,9 +15,22 @@ module.exports = function(server, db) {
     });
     return next();
   });
-  server.get('/api/v1/myDiaryAppData/data/item/:id', function(req, res, next) {
+  server.get("/api/v1/mydiaryapp/activityData/data/datesWithData", function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
-      db.myDiaryAppData.find({
+      db.activityData.distinct("startDate",{
+        user: req.params.token,
+      }, function(err, list) {
+        res.writeHead(200, {
+          'Content-Type': 'application/json; charset=utf-8'
+        });
+        res.end(JSON.stringify(list));
+      });
+    });
+    return next();
+  });
+  server.get('/api/v1/mydiaryapp/activityData/data/item/:id', function(req, res, next) {
+    validateRequest.validate(req, res, db, function() {
+      db.activityData.find({
         _id: db.ObjectId(req.params.id)
       }, function(err, data) {
         res.writeHead(200, {
@@ -26,10 +41,13 @@ module.exports = function(server, db) {
     });
     return next();
   });
-  server.post('/api/v1/myDiaryAppData/data/item', function(req, res, next) {
+  server.post('/api/v1/mydiaryapp/activityData/data/item', function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
       var item = req.params;
-      db.myDiaryAppData.save(item,
+      console.log(item);
+      console.log(db.activityData);
+
+      db.activityData.save(item,
         function(err, data) {
           res.writeHead(200, {
             'Content-Type': 'application/json; charset=utf-8'
@@ -39,9 +57,9 @@ module.exports = function(server, db) {
     });
     return next();
   });
-  server.put('/api/v1/myDiaryAppData/data/item/:id', function(req, res, next) {
+  server.put('/api/v1/mydiaryapp/activityData/data/item/:id', function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
-      db.myDiaryAppData.findOne({
+      db.activityData.findOne({
         _id: db.ObjectId(req.params.id)
       }, function(err, data) {
         // merge req.params/product with the server/product
@@ -54,7 +72,7 @@ module.exports = function(server, db) {
           if (n != "id")
             updProd[n] = req.params[n];
         }
-        db.myDiaryAppData.update({
+        db.activityData.update({
           _id: db.ObjectId(req.params.id)
         }, updProd, {
           multi: false
@@ -68,9 +86,9 @@ module.exports = function(server, db) {
     });
     return next();
   });
-  server.del('/api/v1/myDiaryAppData/data/item/:id', function(req, res, next) {
+  server.del('/api/v1/mydiaryapp/activityData/data/item/:id', function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
-      db.myDiaryAppData.remove({
+      db.activityData.remove({
         _id: db.ObjectId(req.params.id)
       }, function(err, data) {
         res.writeHead(200, {
