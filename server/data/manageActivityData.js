@@ -1,11 +1,24 @@
 module.exports = function(server, db) {
-  db.activityData.insert( { item: "buhahhahaah", token: "buhahha@gmail.com",  user: "buhahha@gmail.com", created:12121212, updated: 23223874, isCompleted: false} )
 
   var validateRequest = require("../auth/validateRequest");
   server.get("/api/v1/mydiaryapp/activityData/data/list", function(req, res, next) {
     validateRequest.validate(req, res, db, function() {
       db.activityData.find({
-        user: req.params.token
+        user: req.params.token,
+        startDate: req.params.startDate
+      }, function(err, list) {
+        res.writeHead(200, {
+          'Content-Type': 'application/json; charset=utf-8'
+        });
+        res.end(JSON.stringify(list));
+      });
+    });
+    return next();
+  });
+  server.get("/api/v1/mydiaryapp/activityData/data/datesWithData", function(req, res, next) {
+    validateRequest.validate(req, res, db, function() {
+      db.activityData.distinct("startDate",{
+        user: req.params.token,
       }, function(err, list) {
         res.writeHead(200, {
           'Content-Type': 'application/json; charset=utf-8'

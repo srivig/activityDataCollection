@@ -1,8 +1,4 @@
-/**
- * diaryEvents
- * @author Yury Vasilyev
- * Copyright (c) 2014 by Yury Vasilyev (aka iamMakep)
- */
+
 var lce_lang = {
   weekname: "week",
   longDaysInWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
