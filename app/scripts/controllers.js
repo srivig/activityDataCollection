@@ -170,6 +170,7 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
   }
   $scope.activityData = {};
   $scope.createNew = function(d) {
+    $rootScope.show();
     $scope.activity.logTime = moment().format();
     $scope.activity.id = generateUUID();
     $scope.activity.endTime = timePicker.endTime;
