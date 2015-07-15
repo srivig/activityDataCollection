@@ -1,0 +1,3 @@
+[submodule "mydiaryserver"]
+	path = mydiaryserver
+	url = https://ukkiv@bitbucket.org/ukkiv/mydiaryserver.git
