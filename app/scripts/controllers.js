@@ -13,6 +13,8 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
 })
 
 .controller('HomeCtrl', function($rootScope,API,$scope, $window) {
+  activityObject.length=0;
+
   if (!$rootScope.isSessionActive()) {
       $window.location.href = ('#/login');
   }
@@ -35,6 +37,9 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
 
   API.getDates(userData)
               .success(function (data, status, headers, config) {
+                  if(data.indexOf(today)==-1){
+                      data.push(today);
+                    }
                 for(var i = 0; i < data.length ; i++){
                     var singleDate = data[i].replace(/-/g,'');
                     $("."+singleDate).addClass("hasData").data("date",data[i]);
