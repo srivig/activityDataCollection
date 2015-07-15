@@ -1,7 +1,9 @@
 var restify     =   require('restify');
 var mongojs     =   require('mongojs');
-var morgan  	=   require('morgan');
-var db          =   mongojs('mydiaryapp', ['appUsers','activityData']);
+var morgan  	  =   require('morgan');
+var dbServer    =   'mongodb://srivi:angryrhino@ds047968.mongolab.com:47968/mydiary_alpha';
+var dbServerLocal = 'mydiaryapp';
+var db          =   mongojs(dbServer, ['appUsers','activityData']);
 var server      =   restify.createServer();
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
