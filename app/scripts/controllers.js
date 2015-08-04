@@ -65,11 +65,7 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
 
 
   $scope.init = function() {
-    // loadChartist = new Chartist.Pie('#timeWheel .ct-chart', activityGraph, chartistOptions);
   };
-  // var activities = activityObjDummy;
-  // activities.startTimeFormatted= moment(activities.startTime).format("hh:mma");
-  // activities.endTimeFormatted= moment(activities.endTime).format("hh:mma");
 
   console.log($scope.listActivities);
   $scope.listActivities = activityObject;

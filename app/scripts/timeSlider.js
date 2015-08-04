@@ -7,7 +7,8 @@ var timePicker = {
 
 }
 
-
+var $startTimeElement;
+var $endTimeElement;
 var timeSlider = function(startTime, endTime) {
     if ($("#slider-range").slider("instance") !== undefined) {
         $("#slider-range").slider("destroy");
@@ -67,9 +68,11 @@ var timeSlider = function(startTime, endTime) {
             ui = {
                 values: [endTime, startTime]
             }
-            setStartTime(ui);
-            setEndTime(ui)
 
+            $startTimeElement= $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-2")[1]);
+            $endTimeElement = $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-2")[0]);
+            setStartTime(ui);
+            setEndTime(ui);
         },
         slide: function(e, ui) {
             /*--------Start time ----------*/
@@ -78,6 +81,7 @@ var timeSlider = function(startTime, endTime) {
             setEndTime(ui)
         }
     });
+
 
     function setStartTime(ui) {
         var startTimeHours, startTimeMinutes,sTime;
@@ -104,7 +108,7 @@ var timeSlider = function(startTime, endTime) {
 
         sTime = startTimeHours + ':' + startTimeMinutes;
         // $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-1")[1]).text(startTimeHours + ':' + startTimeMinutes);
-        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-2")[1]).text(startTimeHours + ':' + startTimeMinutes);
+        $startTimeElement.text(startTimeHours + ':' + startTimeMinutes);
 
         timePicker.startTime = timePicker.today + " " + sTime;
 
@@ -137,7 +141,7 @@ var timeSlider = function(startTime, endTime) {
         }
 
         // $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-1")[0]).text(endTimeHours + ':' + endTimeMinutes);
-        $($(".ui-slider-handle.ui-state-default.ui-corner-all .sliderButtonTime.time-2")[0]).text(endTimeHours + ':' + endTimeMinutes);
+        $endTimeElement.text(endTimeHours + ':' + endTimeMinutes);
         eTime = (endTimeHours + ':' + endTimeMinutes);
         timePicker.endTime = timePicker.today + " " + eTime;
     }

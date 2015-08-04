@@ -304,10 +304,8 @@ label.activityPageLabel {
   float: left; }
 
 .bar-login-signup {
-  background-color: rgba(255, 248, 249, 0.3) !important;
+  background-color: #F4F4F4 !important;
   border: 0px; }
-  .login-signup-page {
-    background: rgba(255, 248, 249, 0.3); }
 
 .bar-login-signup h1 {
   color: #F44F6D !important;
@@ -318,7 +316,9 @@ label.activityPageLabel {
   background-color: #F44F6D !important;
   color: #fff; }
 
-
+.login-signup-page {
+  background: #F44F6D;
+  box-shadow: 0px 0px 201px 32px rgba(0, 0, 0, 0.29) inset; }
 
 .login-signup-form {
   margin-top: 50px; }
