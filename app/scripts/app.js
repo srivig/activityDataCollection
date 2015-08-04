@@ -32,6 +32,7 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
 
   .state('auth.login', {
     url: '/login',
+    cache: false,
     views: {
       'login': {
         templateUrl: 'templates/login.html',
@@ -42,7 +43,8 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
 
   .state('auth.signup', {
       url: '/signup',
-      views: {
+      cache: false,
+      views:{
         'signup': {
           templateUrl: 'templates/signup.html',
           controller: 'SignUpCtrl'
@@ -62,6 +64,7 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
 
   .state('app.home', {
     url: "/home",
+    cache: false,
     views: {
       'menuContent': {
         templateUrl: "templates/home.html",

@@ -255,9 +255,9 @@ label.activityPageLabel {
     left: 15.7em;
     width: 72px;
     margin-left: 0;
-    margin-bottom: -36px;
-    height: 25px;
-    padding: 2px;
+    margin-bottom: -42px;
+    height: 32px;
+    padding: 5px;
     text-align: center;
     background: #ff6682;
     border: 0;
@@ -302,3 +302,23 @@ label.activityPageLabel {
 .custom-list-home ion-item span {
   padding: 1px 3px;
   float: left; }
+
+.bar-login-signup {
+  background-color: #F4F4F4 !important;
+  border: 0px; }
+
+.bar-login-signup h1 {
+  color: #F44F6D !important;
+  font-size: 29px !important; }
+
+.button.button-positive, .button.button-positive.active, .button.button-positive.activated {
+  border-color: #FD234B !important;
+  background-color: #F44F6D !important;
+  color: #fff; }
+
+.login-signup-page {
+  background: #F44F6D;
+  box-shadow: 0px 0px 201px 32px rgba(0, 0, 0, 0.29) inset; }
+
+.login-signup-form {
+  margin-top: 50px; }
