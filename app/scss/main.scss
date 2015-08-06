@@ -174,7 +174,7 @@ label {
 }
 .actButtonPos {
   position: absolute;
-  bottom: 15px;
+  bottom: 60px;
   z-index: 9;
   left: 84%;
 
@@ -225,23 +225,29 @@ label.activityPageLabel {
 
 }
 /*-----customized vendor components------*/
+.actPageCustomList{
+  background-color: #FA9EAF;
+  width: 201px;
+}
+
 #time-range-bottom {
-  position: absolute;
-  height: 60px;
-  background: #ff6682;
-  width: 200px;
-  bottom: -60px;
-  z-index: 99;
-  box-shadow: -8px 0 8px 8px rgba(0, 0, 0, 0.09);
+  position: fixed;
+height: 27px;
+background: #ff6682;
+width: 201px;
+bottom: 0px;
+z-index: 99;
+box-shadow: -8px 0 8px 8px rgba(0, 0, 0, 0.09);
+margin-bottom: 0;
 }
 #time-range {
   width: 310px;
-  margin-top: 18px;
+  margin-top: 40px;
   margin-left: -1px;
   margin-bottom: 30px;
   .timeTickContainer {
     background: #fa9eaf;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 
   }
   p {
@@ -250,6 +256,7 @@ label.activityPageLabel {
   }
   .ui-corner-all {
     border-radius: 0;
+    border: 0px;
   }
   .time-1 {
   font-size: 22px;
@@ -298,7 +305,7 @@ label.activityPageLabel {
     font-size: 16px;
   }
   .ui-slider-range.ui-widget-header.ui-corner-all {
-    margin-bottom: -24px;
+    margin-bottom: -1px;
   }
 
 }
@@ -309,12 +316,12 @@ label.activityPageLabel {
 .ui-slider-vertical {
   width: 202px;
   height: 95%;
-  padding-top: 24px;
+  padding-top: 0px;
   .ui-slider-handle {
     left: 15.7em;
     width: 72px;
     margin-left: 0;
-    margin-bottom: -42px;
+    margin-bottom: -20px;
     height: 32px;
     padding: 5px;
     text-align: center;

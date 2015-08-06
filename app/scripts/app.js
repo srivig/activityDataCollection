@@ -83,6 +83,17 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
     }
   })
 
+  .state('app.activity2', {
+    url: "/activities2/:activityId",
+    cache: false,
+    views: {
+      'menuContent': {
+        templateUrl: "templates/startActivityDragDealer.html",
+        controller: 'ActivityCtrl'
+      }
+    }
+  })
+
   .state('app.activity', {
     url: "/activities/:activityId",
     cache: false,
@@ -96,3 +107,11 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/auth/login');
 });
+
+
+myDiaryApp.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
+    $ionicConfigProvider.spinner.icon('ripple');
+
+}]);
