@@ -83,17 +83,6 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
     }
   })
 
-  .state('app.activity2', {
-    url: "/activities2/:activityId",
-    cache: false,
-    views: {
-      'menuContent': {
-        templateUrl: "templates/startActivityDragDealer.html",
-        controller: 'ActivityCtrl'
-      }
-    }
-  })
-
   .state('app.activity', {
     url: "/activities/:activityId",
     cache: false,

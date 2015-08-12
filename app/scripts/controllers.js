@@ -1,4 +1,4 @@
-angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
+angular.module('myDiaryApp.controllers', ['myDiaryApp.services','flexcalendar','pascalprecht.translate'])
 
 .controller('AppCtrl', function($scope, $rootScope,API,$ionicModal, $timeout, $ionicSideMenuDelegate, $window) {
   //TODO init functions...
@@ -12,7 +12,7 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
   $scope.activities = activities;
 })
 
-.controller('HomeCtrl', function($rootScope,API,$scope, $window) {
+.controller('HomeCtrl', function($rootScope,API,$scope, $window,$ionicModal) {
   activityObject.length=0;
 
   if (!$rootScope.isSessionActive()) {
@@ -24,7 +24,6 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
   function getData(date){
     API.getAll(userData,date)
                 .success(function (data, status, headers, config) {
-                  console.log(data);
                   for(var i = 0; i < data.length ; i++){
                     activityObject.push(data[i]);
                   }
@@ -43,14 +42,15 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
                 for(var i = 0; i < data.length ; i++){
                     var singleDate = data[i].replace(/-/g,'');
                     $("."+singleDate).addClass("hasData").data("date",data[i]);
-                    $("."+singleDate).find("#lcedval").css({"font-weight":"bolder","font-size":"22px"});
+                    $("."+singleDate).find("#lcedval").addClass("hasActivities");
                 }
                 getData(today);
-                $("#diaryEvents .hasData").click(function(){
+                $("#diaryEvents .hasData").on('click touchstart',function(){
                   activityObject.length=0;
                   $("#diaryEvents").find(".selectedDate").removeClass("selectedDate");
                   if(!$(this).find("#lcedcapt,#lcedbody").hasClass("nowdate")){
                     $(this).find("#lcedcapt,#lcedbody").addClass("selectedDate");
+
                   }
 
                   getData($(this).data("date"));
@@ -67,8 +67,52 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
   $scope.init = function() {
   };
 
-  console.log($scope.listActivities);
+  $scope.options = {
+        defaultDate: new Date([2015, 06, 23]),
+        minDate: new Date([2015, 06, 9]),
+        maxDate: new Date([2015, 12, 31]),
+        disabledDates: [
+          new Date([2015,06,17]),
+          new Date([2015,06,20]),
+          new Date([2015,06,26]),
+          new Date([2015,07,5]),
+          new Date([2015,07,6]),
+          new Date([2015,07,7]),
+          new Date([2015,07,8]),
+          new Date([2015,07,9]),
+          new Date([2015,07,10]),
+          new Date([2015,07,11]),
+        ],
+      dayNamesLength: 1,
+      eventClick: function(date) {
+        console.log(date);
+      },
+      dateClick: function(date) {
+        console.log(date);
+      },
+      changeMonth: function(month) {
+        console.log(month);
+      }
+    };
+    $scope.events = [
+    {foo: 'bar', date: new Date([2015, 6, 24])},
+    {foo: 'bar', date: new Date([2015, 6, 19])}
+  ];
+  console.log($scope);
+  $ionicModal.fromTemplateUrl('calendar-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
   $scope.listActivities = activityObject;
+
 
 })
 .controller('SignInCtrl', function ($rootScope, $scope, API, $window) {
@@ -162,6 +206,8 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services'])
       "month":  moment().format("MMM"),
       "day": moment().format("DD"),
       "week": moment().format("dd"),
+      "year": moment().format("YYYY"),
+
     }
   }
   $scope.activityData = {};
