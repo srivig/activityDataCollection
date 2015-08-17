@@ -22,22 +22,18 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services', 'flexcalendar',
     var today = moment().format("YYYY-MM-DD");
     $scope.events =[];
     function getData(date) {
+      $rootScope.show('loading');
       API.getAll(userData, date)
         .success(function(data, status, headers, config) {
           for (var i = 0; i < data.length; i++) {
             activityObject.push(data[i]);
           }
+          $rootScope.hide();
         })
         .error(function(data, status, headers, config) {
           $rootScope.hide();
           $rootScope.notify("Oops something went wrong!! Please try again later");
         });
-    }
-
-    function updateCalendar(events){
-      //$scope.$digest(function(){
-        $scope.events = events;
-    //    })
     }
 
     function showActivity(ele){
@@ -51,6 +47,8 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services', 'flexcalendar',
     }
 
     var events = [];
+    $rootScope.hide();
+
     API.getDates(userData)
       .success(function(data, status, headers, config) {
         if (data.indexOf(today) == -1) {
@@ -83,6 +81,7 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services', 'flexcalendar',
       $scope.closeModal = function() {
         $scope.modal.hide();
       };
+      $rootScope.hide();
 
       })
       .error(function(data, status, headers, config) {
