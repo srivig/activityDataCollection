@@ -53,11 +53,12 @@
 }
 #diaryEvents #lceditem > #lcedcapt {
   width: 80px;
-  height: 18px;
+  height: 45px;
   font-size: 100%;
   text-align: center;
   color: #FFFFFF;
   background: #F44F6D;
+  padding-top: 19px;
 }
 #diaryEvents #lceditem > #lcedcapt.newweek {
   color: #fff;
@@ -195,8 +196,8 @@
   color: #FFF;
   /*background: #FF8A9F;*/
   font-weight: bold;
-  height: 44px;
-  margin-top: -26px;
+  height: 45px;
+  margin-top: 0px;
   padding-top: 19px;
   font-size: 1.4em;
 }
@@ -211,8 +212,8 @@
   color: #FFF;
   /*background: #FF6682;*/
   font-weight: bold;
-  height: 44px;
-  margin-top: -26px;
+  height: 45px;
+  margin-top: 0px;
   padding-top: 19px;
   font-size: 1.4em;
 }
