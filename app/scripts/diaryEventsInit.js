@@ -12,7 +12,7 @@ function initCalendar(){
   $('#diaryEvents._diaryEvents').diaryEvents({
     nowdate: new Date(),
     firstday: 1,
-    lcesize: 100,
+    lcesize: 11,
     returntonow: true,
     returndelay: 4000,
     showScroll: false,

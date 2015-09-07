@@ -7,7 +7,8 @@ angular.module('myDiaryApp.services', [])
         animation: 'fade-in',
         showBackdrop: true,
         maxWidth: 200,
-        showDelay: 0
+        showDelay: 0,
+        template:"<ion-spinner  class='spinner-light' icon='ripple'></ion-spinner>"
       });
     };
     $rootScope.hide = function() {

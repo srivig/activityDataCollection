@@ -6,8 +6,10 @@
     <script src="scripts/diaryEvents.js"></script>
     <script src="scripts/diaryEventsInit.js"></script>
 
-    <ion-list class="custom-list-home">
-      <div id="diaryEvents" class="_diaryEvents"></div>
+    <ion-list id="homeView" class="custom-list-home">
+
+      <!-- <flex-calendar options="options" events="events" ></flex-calendar> -->
+
       <ion-item ng-repeat="activity in listActivities">
 
         <div class="row">
@@ -24,7 +26,25 @@
       </ion-item>
     </ion-list>
 
+        <script id="calendar-modal.html" type="text/ng-template">
+          <ion-modal-view>
+            <ion-header-bar>
+              <h1 class="title"></h1>
+              <div class="button button-clear" ng-click="closeModal()"><span class="icon ion-close"></span></div>
+            </ion-header-bar>
+            <ion-content>
+              <flex-calendar options="options" events="events" ></flex-calendar>
+            </ion-content>
+          </ion-modal-view>
+        </script>
+
     </ion-content>
-    <div><a id="addNew" href="#/app/activities" class="newHome">+</a></div>
+
+
+
+    <div><a id="addNew"  ng-click="openModal()" class="viewCalendar"><span class="icon ion-android-calendar"></span></a></div>
+
+    <div><a id="addNew" href="#/app/activities" class="newHome"><span class="icon ion-plus-round"></span></a></div>
+    <div id="diaryEvents" class="_diaryEvents"></div>
 
 </ion-view>

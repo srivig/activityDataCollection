@@ -17,8 +17,27 @@ span {
 .clickHereImg {
   background-image: url("../images/click-here.png"); }
 
+.platform-ios #homeView .list {
+  top: 90px; }
+
+#homeView .list {
+  top: 115px; }
+
 #diaryEvents {
-  width: 100%; }
+  width: 100%;
+  position: fixed !important;
+  top: 44px;
+  z-index: 999; }
+
+.hasActivities:before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background-color: #fff;
+  position: absolute;
+  bottom: 6px;
+  left: 48%; }
 
 label {
   font-size: 75%;
@@ -81,23 +100,26 @@ label[for*=violet]:before {
   margin: 40px auto;
   position: relative; }
 
-#addNew {
+#addNew,
+#buttonTick {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
   background: #f44f6d;
   position: absolute;
-  padding: 12px;
+  padding: 16px 18px;
   text-align: center;
   top: 54%;
   left: 42%;
   color: #fff;
   z-index: 99999;
   font-size: 2.5em;
+  font-size: 20px;
   box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
-  text-decoration: none; }
+  text-decoration: none;
+  border-radius: 50%;
+  cursor: pointer; }
 
 #addNew.newHome,
+#addNew.viewCalendar,
 #buttonTick {
   background: #e0012a;
   /*#f44f6d;*/
@@ -105,32 +127,32 @@ label[for*=violet]:before {
   transition: border 0.25s linear,color 0.25s linear,background-color 0.25s linear;
   -webkit-font-smoothing: subpixel-antialiased;
   color: #fff;
-  z-index: 99999;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px; }
+  z-index: 99999; }
   #addNew.newHome:hover,
+  #addNew.viewCalendar:hover,
   #buttonTick:hover {
     background: #f46; }
   #addNew.newHome:active, #addNew.newHome:focus,
+  #addNew.viewCalendar:active,
+  #addNew.viewCalendar:focus,
   #buttonTick:active,
   #buttonTick:focus {
     background: #d80129; }
 
 #addNew.newHome {
-  position: absolute;
-  padding: 14px;
-  text-align: center;
-  bottom: 2%;
-  left: 50%;
-  margin-left: -25px;
-  top: inherit;
-  font-size: 2.5em;
-  text-decoration: none; }
+  top: 88% !important;
+  left: 85%; }
+
+#addNew.viewCalendar {
+  top: 88%;
+  left: 2%;
+  background: #fff;
+  color: #e0012a;
+  border: 1px solid rgba(0, 0, 0, 0.2); }
 
 #buttonTick {
   position: absolute;
-  padding: 12px;
+  padding: 10px 13px;
   text-align: center;
   top: 54%;
   left: 42%;
@@ -140,7 +162,7 @@ label[for*=violet]:before {
 
 .actButtonPos {
   position: absolute;
-  bottom: 15px;
+  bottom: 60px;
   z-index: 9;
   left: 84%; }
 
@@ -182,28 +204,34 @@ label.activityPageLabel {
     font-weight: bold; }
 
 /*-----customized vendor components------*/
+.actPageCustomList {
+  background-color: #fa9eaf;
+  width: 201px; }
+
 #time-range-bottom {
-  position: absolute;
-  height: 60px;
+  position: fixed;
+  height: 27px;
   background: #ff6682;
-  width: 200px;
-  bottom: -60px;
+  width: 201px;
+  bottom: 0;
   z-index: 99;
-  box-shadow: -8px 0 8px 8px rgba(0, 0, 0, 0.09); }
+  box-shadow: -8px 0 8px 8px rgba(0, 0, 0, 0.09);
+  margin-bottom: 0; }
 
 #time-range {
   width: 310px;
-  margin-top: 18px;
+  margin-top: 40px;
   margin-left: -1px;
   margin-bottom: 30px; }
   #time-range .timeTickContainer {
     background: #fa9eaf;
-    padding-bottom: 20px; }
+    padding-bottom: 0; }
   #time-range p {
     font-size: 14px;
     color: #333; }
   #time-range .ui-corner-all {
-    border-radius: 0; }
+    border-radius: 0;
+    border: 0; }
   #time-range .time-1 {
     font-size: 22px; }
   #time-range .time-2 {
@@ -214,7 +242,7 @@ label.activityPageLabel {
     z-index: 999;
     background: #fff;
     color: #5c5c5c;
-    padding: 1px 0px;
+    padding: 1px 0;
     border-radius: 5px;
     width: 107px;
     top: 22px;
@@ -242,7 +270,7 @@ label.activityPageLabel {
     color: rgba(255, 255, 255, 0.51);
     font-size: 16px; }
   #time-range .ui-slider-range.ui-widget-header.ui-corner-all {
-    margin-bottom: -24px; }
+    margin-bottom: -1px; }
 
 .ui-widget-content {
   background: #fa9eaf; }
@@ -250,12 +278,12 @@ label.activityPageLabel {
 .ui-slider-vertical {
   width: 202px;
   height: 95%;
-  padding-top: 24px; }
+  padding-top: 0; }
   .ui-slider-vertical .ui-slider-handle {
     left: 15.7em;
     width: 72px;
     margin-left: 0;
-    margin-bottom: -42px;
+    margin-bottom: -20px;
     height: 32px;
     padding: 5px;
     text-align: center;
@@ -305,20 +333,47 @@ label.activityPageLabel {
 
 .bar-login-signup {
   background-color: #F4F4F4 !important;
-  border: 0px; }
+  border: 0; }
 
 .bar-login-signup h1 {
   color: #F44F6D !important;
   font-size: 29px !important; }
 
-.button.button-positive, .button.button-positive.active, .button.button-positive.activated {
+.button.button-positive,
+.button.button-positive.active,
+.button.button-positive.activated {
   border-color: #FD234B !important;
   background-color: #F44F6D !important;
   color: #fff; }
 
 .login-signup-page {
-  background: #F44F6D;
-  box-shadow: 0px 0px 201px 32px rgba(0, 0, 0, 0.29) inset; }
+  background: #f44f6d;
+  box-shadow: 0 0 201px 32px rgba(0, 0, 0, 0.29) inset; }
 
 .login-signup-form {
-  margin-top: 50px; }
+  margin-top: 28px; }
+
+/*Custom ionic components*/
+.bar.bar-mydiary {
+  border: none;
+  background-color: #f44f6d;
+  background-image: none;
+  color: #fff; }
+.bar.bar-stable .title {
+  color: #fff;
+  font-size: 18px; }
+
+.bar-stable .button.button-clear {
+  color: #fff; }
+
+.flex-calendar .month {
+  background-color: #f44f6d; }
+
+.flex-calendar .days .day.selected .number {
+  background-color: #f44f6d; }
+
+.flex-calendar .days .day.event:before {
+  background-color: #f44f6d; }
+
+.flex-calendar .week {
+  background-color: #FB7089; }

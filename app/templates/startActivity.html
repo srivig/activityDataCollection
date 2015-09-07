@@ -2,14 +2,10 @@
   <ion-content>
 
     <div id="diaryEvents" class="actPageStyle">
-      <div id="lceditem" class="20150221" style="-webkit-user-select: none; display: inline-block; float: left;">
-        <div id="lcedcapt" class="nowdate weekend" style="-webkit-user-select: none;">{{activity.today.month}}</div>
-        <div id="lcedbody" class="nowdate weekend" style="position: relative; -webkit-user-select: none;">
-          <div style="position: relative; bottom: 0px; top: 0px; left: 0px; right: 0px; display: table; height: 100%; width: 100%;">
-            <span id="lcedval" style="display:table-cell; vertical-align:middle;">{{activity.today.day}}</span>
-          </div>
-        </div>
-      </div>
+<div class="monthText">{{activity.today.month}}</div>
+<div class="yearNumber">{{activity.today.year}}</div>
+
+<div class="dayNumber">{{activity.today.day}}</div>
     </div>
     <!--dirty spacing stuff beings-->
     </br>
@@ -21,18 +17,21 @@
       timeSlider(1440,840);
     })
     </script>
-    <div id="time-range-bottom"></div>
-    <div class="list">
+    <div class="list actPageCustomList">
       <div id="time-range">
         <div class="sliders_step1">
           <div id="slider-range"></div>
         </div>
       </div>
-      <div class="actButtonPos">
-        <button id="buttonTick" ng-click="createNew()">
-          <span class="fa fa-check"></span>
-        </button>
-      </div>
+
     </div>
+    <div class="actButtonPos">
+      <button id="buttonTick" ng-click="createNew()">
+        <span class="fa fa-check"></span>
+      </button>
+    </div>
+
   </ion-content>
+  <div id="time-range-bottom"></div>
+
 </ion-view>

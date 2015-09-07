@@ -5,27 +5,44 @@ body {
   padding: 0;
   border-color: #b2b2b2;
   background-color: #f8f8f8;
+
   // background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
   // background-image: url(../images/ricepaper2.png);
-
 }
 td,
 body,
 span {
   /*font-family: tahoma, verdana;*/
-
 }
 .scroll-content {
   background-image: url("/images/background.png");
-
 }
 .clickHereImg {
   background-image: url("../images/click-here.png");
-
+}
+.platform-ios #homeView .list {
+  top: 90px;
+}
+#homeView .list {
+  top: 115px;
 }
 #diaryEvents {
   width: 100%;
-
+  position: fixed!important;
+  top: 44px;
+  z-index: 999;
+}
+.hasActivities {
+  &:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 6px;
+    left: 48%;
+  }
 }
 label {
   font-size: 75%;
@@ -37,7 +54,6 @@ label {
   margin-right: 15px;
   color: #ccc;
   border-bottom: 1px dotted #ccc;
-
 }
 input[type=radio] {
   &:checked + label {
@@ -46,7 +62,6 @@ input[type=radio] {
     border-width: 2px;
   }
   display: none;
-
 }
 label {
   &[for^=d]:before {
@@ -93,38 +108,37 @@ label {
   &[for*=violet]:before {
     background-color: #8576fe;
   }
-
 }
 .csscode {
   color: #ff9;
-
 }
 #timeWheel {
   width: 300px;
   margin: 40px auto;
   position: relative;
-
 }
-#addNew {
+#addNew,
+#buttonTick {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
   background: #f44f6d;
   position: absolute;
-  padding: 12px;
+  padding: 16px 18px;
   text-align: center;
   top: 54%;
   left: 42%;
   color: #fff;
   z-index: 99999;
   font-size: 2.5em;
+  font-size: 20px;
   -webkit-box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
   -moz-box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
   box-shadow: -1px 3px 6px -2px rgba(0, 0, 0, 0.52);
   text-decoration: none;
-
+  border-radius: 50%;
+  cursor: pointer;
 }
 #addNew.newHome,
+#addNew.viewCalendar,
 #buttonTick {
   background: #e0012a;
   /*#f44f6d;*/
@@ -136,10 +150,6 @@ label {
   -webkit-font-smoothing: subpixel-antialiased;
   color: #fff;
   z-index: 99999;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-
   &:hover {
     background: #f46;
   }
@@ -147,71 +157,61 @@ label {
   &:focus {
     background: #d80129;
   }
-
 }
 #addNew.newHome {
-  position: absolute;
-  padding: 14px;
-  text-align: center;
-  bottom: 2%;
-  left: 50%;
-  margin-left: -25px;
-  top: inherit;
-  font-size: 2.5em;
-  text-decoration: none;
+  top: 88%!important;
+  left: 85%;
+}
+#addNew.viewCalendar {
+  top: 88%;
+  left: 2%;
+  background: #fff;
+  color: #e0012a;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 #buttonTick {
-
   position: absolute;
-  padding: 12px;
+  padding: 10px 13px;
   text-align: center;
   top: 54%;
   left: 42%;
   font-size: 1.5em;
   text-decoration: none;
   border: 0;
-
 }
 .actButtonPos {
   position: absolute;
-  bottom: 15px;
+  bottom: 60px;
   z-index: 9;
   left: 84%;
-
 }
 ion-view.pane {
   /*background-image: url(../images/ricepaper2.png);*/
   border-color: #b2b2b2;
   background-color: #f8f8f8;
-
 }
 label.activityPageLabel {
   width: 100%;
   border: 0;
   color: #d3d3d3;
   font-size: 1em;
-
 }
 .ui-timepicker-wrapper {
   width: 80%;
-
 }
 .ui-timepicker-list li {
   padding: 14px 0 3px 5px;
   border-bottom: 1px solid #f5f5f5;
-
 }
 .ui-timepicker-wrapper.ui-timepicker-with-duration {
   width: 60% !important;
   overflow-y: scroll;
-
 }
 .activityIconTweaks {
   font-size: 2em;
   padding: 8px 10px;
   background: #f44f6d;
   color: #fff;
-
 }
 .ct-chart .ct-label {
   color: #fff !important;
@@ -222,27 +222,30 @@ label.activityPageLabel {
     fill: #fff;
     font-weight: bold;
   }
-
 }
 /*-----customized vendor components------*/
+.actPageCustomList {
+  background-color: #fa9eaf;
+  width: 201px;
+}
 #time-range-bottom {
-  position: absolute;
-  height: 60px;
+  position: fixed;
+  height: 27px;
   background: #ff6682;
-  width: 200px;
-  bottom: -60px;
+  width: 201px;
+  bottom: 0;
   z-index: 99;
   box-shadow: -8px 0 8px 8px rgba(0, 0, 0, 0.09);
+  margin-bottom: 0;
 }
 #time-range {
   width: 310px;
-  margin-top: 18px;
+  margin-top: 40px;
   margin-left: -1px;
   margin-bottom: 30px;
   .timeTickContainer {
     background: #fa9eaf;
-    padding-bottom: 20px;
-
+    padding-bottom: 0;
   }
   p {
     font-size: 14px;
@@ -250,22 +253,23 @@ label.activityPageLabel {
   }
   .ui-corner-all {
     border-radius: 0;
+    border: 0;
   }
   .time-1 {
-  font-size: 22px;
-}
+    font-size: 22px;
+  }
   .time-2 {
     margin-left: -172%;
-      position: absolute;
-      left: -100%;
-      font-size: 16px;
-      z-index: 999;
-      background: #fff;
-      color: #5c5c5c;
-      padding: 1px 0px;
-      border-radius: 5px;
-      width: 107px;
-      top: 22px;
+    position: absolute;
+    left: -100%;
+    font-size: 16px;
+    z-index: 999;
+    background: #fff;
+    color: #5c5c5c;
+    padding: 1px 0;
+    border-radius: 5px;
+    width: 107px;
+    top: 22px;
     -webkit-box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
     -moz-box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
     box-shadow: 0 10px 8px -8px rgba(0, 0, 0, 0.41);
@@ -298,23 +302,21 @@ label.activityPageLabel {
     font-size: 16px;
   }
   .ui-slider-range.ui-widget-header.ui-corner-all {
-    margin-bottom: -24px;
+    margin-bottom: -1px;
   }
-
 }
 .ui-widget-content {
   background: #fa9eaf;
-
 }
 .ui-slider-vertical {
   width: 202px;
   height: 95%;
-  padding-top: 24px;
+  padding-top: 0;
   .ui-slider-handle {
     left: 15.7em;
     width: 72px;
     margin-left: 0;
-    margin-bottom: -42px;
+    margin-bottom: -20px;
     height: 32px;
     padding: 5px;
     text-align: center;
@@ -338,10 +340,8 @@ label.activityPageLabel {
       background: #fc3d60;
     }
   }
-
 }
 .custom-list ion-item {
-
   a {
     font-size: 1.4em;
     padding: 25px 23px!important;
@@ -356,7 +356,6 @@ label.activityPageLabel {
     padding: 7px 3px;
     float: left;
   }
-
 }
 .custom-list-home {
   .activityDetails {
@@ -371,7 +370,6 @@ label.activityPageLabel {
       padding: 0;
       width: 18px;
     }
-
   }
   ion-item {
     i {
@@ -379,7 +377,6 @@ label.activityPageLabel {
       padding: 0 14px;
       width: 40px;
       font-size: 1.5em;
-
     }
     span {
       padding: 1px 3px;
@@ -387,37 +384,66 @@ label.activityPageLabel {
     }
   }
 }
-
 ion-nav-view[name="login"] {
-}
 
+}
 .bar-login-signup {
-    background-color: #F4F4F4!important;
-    border: 0px;
+  background-color: #F4F4F4!important;
+  border: 0;
 }
-
 .bar-login-signup h1 {
   color: #F44F6D!important;
   font-size: 29px!important;
 }
-
-.button.button-positive,  .button.button-positive.active, .button.button-positive.activated {
+.button.button-positive,
+.button.button-positive.active,
+.button.button-positive.activated {
   border-color: #FD234B!important;
   background-color: #F44F6D!important;
   color: #fff;
 }
-
 .login-signup-page {
-    // background: #F4F4F4;
-  // background-image: url("/images/login-background.jpg");
-  background: #F44F6D;
-  -webkit-box-shadow: 0px 0px 201px 32px rgba(0, 0, 0, 0.29) inset;
-  -moz-box-shadow: 0px 0px 201px 32px rgba(0, 0, 0, 0.29) inset;
-  box-shadow:  0px 0px 201px 32px rgba(0, 0, 0, 0.29) inset;
 
+  // background: #F4F4F4;
+  // background-image: url("/images/login-background.jpg");
+  background: #f44f6d;
+  -webkit-box-shadow: 0 0 201px 32px rgba(0, 0, 0, 0.29) inset;
+  -moz-box-shadow: 0 0 201px 32px rgba(0, 0, 0, 0.29) inset;
+  box-shadow: 0 0 201px 32px rgba(0, 0, 0, 0.29) inset;
+}
+.login-signup-form {
+
+  // border: 11px solid #FFF;
+  margin-top: 28px;
 }
 
-.login-signup-form {
-    // border: 11px solid #FFF;
-    margin-top: 50px;
+/*Custom ionic components*/
+.bar {
+  &.bar-mydiary {
+    border: none;
+    background-color: #f44f6d;
+    background-image: none;
+    color: #fff;
+  }
+  &.bar-stable .title {
+    color: #fff;
+    font-size: 18px;
+  }
+}
+.bar-stable .button.button-clear {
+  color: #fff;
+}
+
+.flex-calendar .month{
+      background-color: #f44f6d;
+}
+.flex-calendar .days .day.selected .number{
+  background-color: #f44f6d;
+}
+.flex-calendar .days .day.event:before{
+  background-color: #f44f6d;
+}
+.flex-calendar .week{
+  background-color: #FB7089;
+
 }

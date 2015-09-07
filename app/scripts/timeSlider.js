@@ -7,6 +7,7 @@ var timePicker = {
 
 }
 
+
 var $startTimeElement;
 var $endTimeElement;
 var timeSlider = function(startTime, endTime) {
@@ -48,18 +49,31 @@ var timeSlider = function(startTime, endTime) {
                 $(this).append($(lineHTML)).append($(time2HTML));
                 c++;
             });
-            $(_timeRangeVerticalContainer).height($(window).height() - 204);
+            $(_timeRangeVerticalContainer).height($(window).height() - 183);
             verticalContainerHeight = Math.round($(_timeRangeVerticalContainer).height());
 
-            $timeTick.height((verticalContainerHeight+24) / 24);
+            $timeTick.height((verticalContainerHeight) / 24);
 
             //add ticks
-            for (var i = 0; i <= 23; i++) {
+            for (var i = 0; i <= 24; i++) {
                 var div = $timeTick.clone();
-                if (i === 12) {
-                    div.append('<span class="tickText">12:00 PM</span>');
+
+                if(i%3==0){
+                  if(i<12){
+                    div.append('<span class="tickText">'+i+':00 AM</span>');
+                    div.width(50);
+                    div.find(".tickText").css({"left":"60px","font-size":"14px"});
+                  }else if(i>12){
+                    div.append('<span class="tickText">'+(i-12)+':00 PM</span>');
+                    div.width(50);
+                    div.find(".tickText").css({"left":"60px","font-size":"14px"});
+                  }else{
+                    div.append('<span class="tickText">'+i+':00 PM</span>');
                     div.width(100);
+                  }
                 }
+
+
                 $timeTickContainer.append(div);
             }
 

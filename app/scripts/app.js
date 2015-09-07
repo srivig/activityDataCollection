@@ -96,3 +96,11 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/auth/login');
 });
+
+
+myDiaryApp.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
+    $ionicConfigProvider.spinner.icon('ripple');
+
+}]);
