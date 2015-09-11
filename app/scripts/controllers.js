@@ -25,6 +25,13 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services', 'flexcalendar',
       $rootScope.show('loading');
       API.getAll(userData, date)
         .success(function(data, status, headers, config) {
+          /*$(".activityListContainer").append(date); */
+          var dateHeader = {};
+          dateHeader.day =  moment(date).format("DD");
+          dateHeader.month = moment(date).format("MMM");
+          dateHeader.year = moment(date).format("YYYY");
+          dateHeader.isHeader = true;
+          activityObject.push(dateHeader);
           for (var i = 0; i < data.length; i++) {
             activityObject.push(data[i]);
           }
@@ -49,50 +56,50 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services', 'flexcalendar',
     var events = [];
     $rootScope.hide();
 
-    API.getDates(userData)
-      .success(function(data, status, headers, config) {
-        if (data.indexOf(today) == -1) {
-          data.push(today);
-        }
-        for (var i = 0; i < data.length; i++) {
-          $scope.events.push({
-            date: data[i]
+    API.getDates(userData).success(function(data, status, headers, config) {
+          if (data.indexOf(today) == -1) {
+            data.push(today);
+          }
+
+          for (var i = 0; i < data.length; i++) {
+            $scope.events.push({
+              date: data[i]
+            });
+            var singleDate = data[i].replace(/-/g, '');
+            $("." + singleDate).addClass("hasData").data("date", data[i]);
+            $("." + singleDate).find("#lcedval").addClass("hasActivities");
+            console.log(data[i]);
+            getData(data[i]);
+          }
+          /*getData(today);*/
+          $("#diaryEvents .hasData").on('click touchstart', function() {
+            var ele = $(this);
+            showActivity(ele);
           });
-          var singleDate = data[i].replace(/-/g, '');
-          $("." + singleDate).addClass("hasData").data("date", data[i]);
-          $("." + singleDate).find("#lcedval").addClass("hasActivities");
-        }
 
-        getData(today);
-        $("#diaryEvents .hasData").on('click touchstart', function() {
-          var ele = $(this);
-          showActivity(ele);
-        });
+          /* Load flexcalendar */
+          $ionicModal.fromTemplateUrl('calendar-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.modal = modal;
+          });
+          $scope.openModal = function() {
+            $scope.modal.show();
+          };
+          $scope.closeModal = function() {
+            $scope.modal.hide();
+          };
+          $rootScope.hide();
 
-      $ionicModal.fromTemplateUrl('calendar-modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-      }).then(function(modal) {
-        $scope.modal = modal;
-      });
-      $scope.openModal = function() {
-        $scope.modal.show();
-      };
-      $scope.closeModal = function() {
-        $scope.modal.hide();
-      };
-      $rootScope.hide();
-
-      })
-      .error(function(data, status, headers, config) {
-        $rootScope.hide();
-        $rootScope.notify("Oops something went wrong!! Please try again later");
+      }).error(function(data, status, headers, config) {
+          $rootScope.hide();
+          $rootScope.notify("Oops something went wrong!! Please try again later");
       });
 
+      /* Options for flexcalendar */
       $scope.options = {
         defaultDate: today,
-        /*minDate: new Date([2015, 06, 9]),
-        maxDate: new Date([2015, 12, 31]),*/
         dayNamesLength: 1,
         eventClick: function(date) {
           var formattedDate = moment(date).format("YYYY-MM-DD");
@@ -100,21 +107,15 @@ angular.module('myDiaryApp.controllers', ['myDiaryApp.services', 'flexcalendar',
           var ele = $("."+formattedDateClass);
           showActivity(ele);
           $scope.closeModal();
-          /*this.options.defaultDate = date;*/
         },
         dateClick: function(date) {
-          /*console.log(date);*/
         },
         changeMonth: function(month) {
-          /*console.log(month);*/
         }
       };
+
       $scope.init = function() {};
-
-
-
-
-    $scope.listActivities = activityObject;
+      $scope.listActivities = activityObject;
 
 
   })
