@@ -53,7 +53,7 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
     })
 
   .state('app.activities', {
-    url: "/activities",
+    url: "/activities/:date",
     views: {
       'menuContent': {
         templateUrl: "templates/activities.html",
@@ -84,7 +84,7 @@ var myDiaryApp = angular.module('myDiaryApp', ['ionic', 'myDiaryApp.controllers'
   })
 
   .state('app.activity', {
-    url: "/activities/:activityId",
+    url: "/activities/:activityId/:date",
     cache: false,
     views: {
       'menuContent': {

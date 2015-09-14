@@ -15,10 +15,10 @@ var timeSlider = function(startTime, endTime) {
         $("#slider-range").slider("destroy");
     }
 
-    if (activityObject.length > 0) {
+    /*if (activityObject.length > 0) {
         startTime = getDuration();
         endTime = startTime - 300;
-    }
+    }*/
 
     $("#slider-range").slider({
         orientation: "vertical",
