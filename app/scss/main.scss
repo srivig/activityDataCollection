@@ -14,6 +14,9 @@ body,
 span {
   /*font-family: tahoma, verdana;*/
 }
+.text-center{
+  text-align: center;
+}
 .scroll-content {
   background-image: url("/images/background.png");
 }
@@ -24,7 +27,7 @@ span {
   top: 90px;
 }
 #homeView .list {
-  top: 115px;
+  // top: 115px;
 }
 #diaryEvents {
   width: 100%;
@@ -446,4 +449,49 @@ ion-nav-view[name="login"] {
 .flex-calendar .week{
   background-color: #FB7089;
 
+}
+ion-item.activityListContainer {
+  &.divider {
+    position: relative;
+    background-color: #F44F6D;
+    width: 60px !important;
+    border-radius: 103px;
+    height: 60px;
+    margin-left: 0px !important;
+    margin-bottom: -58px !important;
+    margin-top: 15px;
+    color: #fff;
+    overflow: inherit;
+    >div {
+       text-align: center;
+   }
+  }
+  &.item {
+    margin-left: 68px;
+    width: 80%;
+    margin-bottom: 14px;
+  }
+  &.divider .row {
+    display: none;
+  }
+  &.item {
+    .dateHeader {
+      display: none;
+    }
+    &.divider .dateHeader {
+      display: block !important;
+      .dateHeaderDay {
+        margin-top: -5px;
+        font-size: 1.4em;
+        margin-left: -3px;
+        margin-bottom: 2px;
+        font-weight: 500;
+      }
+      .dateHeaderYear{
+        color: #DADADA;
+        margin: 3px -4px;
+        font-size: 0.8em;
+      }
+    }
+  }
 }

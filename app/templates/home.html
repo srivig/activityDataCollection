@@ -10,7 +10,12 @@
 
       <!-- <flex-calendar options="options" events="events" ></flex-calendar> -->
 
-      <ion-item ng-repeat="activity in listActivities">
+      <ion-item ng-repeat="activity in listActivities" class="activityListContainer" ng-class="{'divider': activity.isHeader}">
+        <div class="dateHeader">
+          <div class="dateHeaderDay">{{activity.day}}</div>
+          <div class="dateHeaderMonth">{{activity.month}}</div>
+          <div class="dateHeaderYear">{{activity.year}}</div>
+        </div>
 
         <div class="row">
           <div class="col timePeriod">
@@ -34,6 +39,9 @@
             </ion-header-bar>
             <ion-content>
               <flex-calendar options="options" events="events" ></flex-calendar>
+              <div class="text-center col"><a class="button button-light" ng-click="createNewActivity('today')" >
+                Today
+              </a></div>
             </ion-content>
           </ion-modal-view>
         </script>
@@ -42,9 +50,12 @@
 
 
 
-    <div><a id="addNew"  ng-click="openModal()" class="viewCalendar"><span class="icon ion-android-calendar"></span></a></div>
+    <!-- <div><a id="addNew"  ng-click="openModal()" class="viewCalendar"><span class="icon ion-android-calendar"></span></a></div> -->
 
-    <div><a id="addNew" href="#/app/activities" class="newHome"><span class="icon ion-plus-round"></span></a></div>
-    <div id="diaryEvents" class="_diaryEvents"></div>
+    <!-- <div><a id="addNew" href="#/app/activities" class="newHome"><span class="icon ion-plus-round"></span></a></div> -->
+    <div><a id="addNew" ng-click="openModal()"  class="newHome"><span class="icon ion-plus-round"></span></a></div>
+
+
+    <!-- <div id="diaryEvents" class="_diaryEvents"></div> -->
 
 </ion-view>
