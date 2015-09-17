@@ -1,0 +1,29 @@
+<ion-view view-title="">
+  <ion-content class="background-white" >
+    <div class="actPageCover">
+      <div style="margin: 0 auto; width:200px">
+        <div id="diaryEvents" class="actPageStyle">
+          <div class="monthText">{{activity.today.month}}</div>
+          <div class="yearNumber">{{activity.today.year}}</div>
+          <div class="dayNumber">{{activity.today.day}}</div>
+        </div>
+      </div>
+      <div class="actPageCoverContent">
+        <i class="icon {{activity.activityLabel.icon}}"></i>
+        <span>{{activity.activityLabel.title}}</span>
+      </div>
+    </div>
+    <div class="actPageContent">
+      <span>{{activity.startTime | limitTo:-8 | limitTo:8 }}</span>
+      <i class="icon ion-ios-arrow-thin-right"></i>
+      <span>{{activity.endTime | limitTo:-8 | limitTo:8 }}</span>
+    </div>
+
+    <div>
+      <a id="addNew" ng-click="updateActivity(activity._id, activity.startDate, activity.activityId)" class="viewCalendar">
+        <span class="icon ion-edit"></span>
+      </a>
+    </div>
+
+  </ion-content>
+</ion-view>

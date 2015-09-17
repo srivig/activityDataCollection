@@ -71,8 +71,8 @@ angular.module('myDiaryApp.services', [])
           }
         });
       },
-      getOne: function(id, email) {
-        return $http.get(base + '/api/v1/mydiaryapp/activityData/data/item/' + id, {
+      getExisting: function(email, id ) {
+        return $http.get(base + '/api/v1/mydiaryapp/activityData/existing/' + id, {
           method: 'GET',
           params: {
             token: email
