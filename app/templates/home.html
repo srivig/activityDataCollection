@@ -17,7 +17,7 @@
           <div class="dateHeaderYear">{{activity.year}}</div>
         </div>
 
-        <div class="row">
+        <div class="row" ng-click="viewActivity(activity._id)">
           <div class="col timePeriod">
             <span>{{activity.startTime | limitTo:-8 | limitTo:8  }}</span>
             <i class="icon ion-ios-arrow-thin-right"></i>
@@ -26,7 +26,6 @@
           <div class="col activityDetails">
           <i class="icon {{activity.activityLabel.icon}}"></i>
           <span>{{activity.activityLabel.title}}<span></div>
-
         </div>
       </ion-item>
     </ion-list>

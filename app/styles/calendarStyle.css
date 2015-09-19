@@ -160,28 +160,7 @@
   top: 0px;
   color: #FFFFFF;
 }
-#diaryEvents.actPageStyle .dayNumber {
-  position: absolute;
-  padding: 12px 11px;
-  top: 1%;
-  left: 42%;
-  font-size: 3em;
-  text-decoration: none;
-  border: 0;
-}
-#diaryEvents.actPageStyle .monthText {
-  font-size: 17px;
-  position: absolute;
-  left: 54px;
-  top: 4px;
-  color: #fff;
-}
-#diaryEvents.actPageStyle .yearNumber {
-  top: 25px;
-  position: absolute;
-  left: 54px;
-  font-size: 13px;
-}
+
 #diaryEvents.actPageStyle #lceditem > #lcedcapt.nowdate {
   font-size: 1.3em;
   width: 200px;
