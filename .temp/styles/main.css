@@ -14,6 +14,9 @@ span {
 .text-center {
   text-align: center; }
 
+.background-white {
+  background: #fff !important; }
+
 .scroll-content {
   background-image: url("/images/background.png"); }
 
@@ -411,3 +414,47 @@ ion-item.activityListContainer.item.divider .dateHeader {
     color: #DADADA;
     margin: 3px -4px;
     font-size: 0.8em; }
+
+.actPageCover {
+  width: 100%;
+  text-align: center;
+  clear: both;
+  padding: 20px 50px 50px 50px;
+  background-color: #F44F6D;
+  margin-top: -1px;
+  color: #fff; }
+
+.actPageContent {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  background-color: #fff;
+  height: 100%;
+  position: absolute;
+  padding: 60px 50px; }
+
+.actPageCoverContent {
+  margin-top: 45px;
+  font-size: 2.5em; }
+
+#diaryEvents.actPageStyle .dayNumber {
+  position: absolute;
+  padding: 12px 11px;
+  top: 1%;
+  left: 42%;
+  font-size: 3em;
+  text-decoration: none;
+  border: 0; }
+
+#diaryEvents.actPageStyle .monthText {
+  font-size: 1.2em;
+  position: absolute;
+  left: 54px;
+  top: 4px;
+  color: #fff; }
+
+#diaryEvents.actPageStyle .yearNumber {
+  top: 25px;
+  position: absolute;
+  left: 54px;
+  font-size: 1em; }

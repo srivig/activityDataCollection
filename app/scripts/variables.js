@@ -86,3 +86,15 @@ var generateUUID =function() {
     });
     return uuid;
 };
+
+/**
+Reference : http://stackoverflow.com/a/979997/326831
+**/
+function gup( name, url ) {
+  if (!url) url = location.href
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( url );
+  return results == null ? null : results[1];
+}

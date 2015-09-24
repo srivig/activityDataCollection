@@ -1,7 +1,7 @@
 angular.module('myDiaryApp.services', [])
   .factory('API', function($rootScope, $http, $ionicLoading, $window) {
-    /*var base = "https://mydiaryalpha.herokuapp.com/";*/
-    var base = "http://localhost:9804/";
+    var base = "https://mydiaryalpha.herokuapp.com/";
+    /*var base = "http://localhost:9804/";*/
 
     $rootScope.show = function(text) {
       $rootScope.loading = $ionicLoading.show({
@@ -71,8 +71,8 @@ angular.module('myDiaryApp.services', [])
           }
         });
       },
-      getOne: function(id, email) {
-        return $http.get(base + '/api/v1/mydiaryapp/activityData/data/item/' + id, {
+      getExisting: function(email, id ) {
+        return $http.get(base + '/api/v1/mydiaryapp/activityData/existing/' + id, {
           method: 'GET',
           params: {
             token: email
