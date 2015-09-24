@@ -1,7 +1,7 @@
 angular.module('myDiaryApp.services', [])
   .factory('API', function($rootScope, $http, $ionicLoading, $window) {
-    /*var base = "https://mydiaryalpha.herokuapp.com/";*/
-    var base = "http://localhost:9804/";
+    var base = "https://mydiaryalpha.herokuapp.com/";
+    /*var base = "http://localhost:9804/";*/
 
     $rootScope.show = function(text) {
       $rootScope.loading = $ionicLoading.show({
