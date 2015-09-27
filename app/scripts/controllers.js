@@ -371,8 +371,11 @@ General Activities Control
           });
           $state.go('app.home');
           $rootScope.hide();
-          $rootScope.doRefresh(1);
-          window.location.reload();
+
+          /*$window.location.href = ('#/app/home');*/
+          /*$rootScope.hide();*/
+          /*$rootScope.doRefresh(1);*/
+          /*window.location.reload();*/
 
         })
         .error(function(data, status, headers, config) {
