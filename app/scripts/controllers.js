@@ -369,10 +369,9 @@ General Activities Control
           $ionicHistory.nextViewOptions({
             disableBack: true
           });
-          $state.go('app.home');
+          /*$state.go('app.home');*/
           $rootScope.hide();
-
-          /*$window.location.href = ('#/app/home');*/
+          $window.location.href = ('#/app/home');
           /*$rootScope.hide();*/
           /*$rootScope.doRefresh(1);*/
           /*window.location.reload();*/
