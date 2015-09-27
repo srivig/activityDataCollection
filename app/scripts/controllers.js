@@ -24,6 +24,7 @@ General Activities Control
 --------------------------------------------**/
 
 .controller('HomeCtrl', function($rootScope, API, $scope, $window, $ionicModal) {
+  $rootScope.show('loading');
   activityObject.length = 0;
 
   /* User auth */
@@ -37,8 +38,9 @@ General Activities Control
   $scope.events = [];
 
   /* Function to get activity data from mongodb server based on the dates */
-  function getData(date) {
-    $rootScope.show('loading');
+  var count = 0;
+  function getData(date,dataLength) {
+    /**/
     API.getAll(userData, date)
       .success(function(data, status, headers, config) {
 
@@ -55,17 +57,22 @@ General Activities Control
           activityObject.unshift(data[i]);
         }
         activityObject.unshift(dateHeader);
-        $rootScope.hide();
+        count++;
+        if(count == dataLength){
+          $rootScope.hide();
+          count=0;
+        }
+
 
       }) /* TODO : Handle exceptions  */
       .error(function(data, status, headers, config) {
-        $rootScope.hide();
+        /*$rootScope.hide();*/
         $rootScope.notify("Oops something went wrong!! Please try again later");
       });
   }
 
   /* Display activity in calendar - NOTE : REMOVE THIS FUNCTION SOON, THIS FEATURE IS REMOVED*/
-  function showActivity(ele) {
+  /*function showActivity(ele) {
     activityObject.length = 0;
     $("#diaryEvents").find(".selectedDate").removeClass("selectedDate");
     if (!ele.find("#lcedcapt,#lcedbody").hasClass("nowdate")) {
@@ -73,7 +80,7 @@ General Activities Control
 
     }
     getData(ele.data("date"));
-  }
+  }*/
 
   /* scope method to create new activity */
   $scope.createNewActivity = function(date) {
@@ -88,26 +95,29 @@ General Activities Control
   }
 
   var events = []; //variable to flex-calendar event scope
-  $rootScope.hide();
+  /*$rootScope.hide();*/
 
   /* Function to get all the dates that contains data (with a spererate condition of today's date, this should be handled properly) */
   API.getDates(userData).success(function(data, status, headers, config) {
       /*if (data.indexOf(today) == -1) {
         data.push(today);
       }*/
-      data.sort();
+
+      /*to sort the date by recent first order*/
+      data.sort(function(b,a){
+        // to get a value that is either negative, positive, or zero.
+        return moment(b).toDate() - moment(a).toDate();
+      });
+
       for (var i = 0; i < data.length; i++) {
         $scope.events.push({
           date: data[i]
         });
-
-        /* remove the following snippet soon, this feature is removed */
-        var singleDate = data[i].replace(/-/g, '');
-        $("." + singleDate).addClass("hasData").data("date", data[i]);
-        $("." + singleDate).find("#lcedval").addClass("hasActivities");
-
         /*Function call to get data, multiple calls to server, needed for lazy loading in future*/
-        getData(data[i]);
+        getData(data[i],data.length);
+        if(i==(data.length-1)){
+          /*$rootScope.hide();*/
+        }
       }
 
       /*remove the following snippet, this feature is removed */
@@ -129,13 +139,14 @@ General Activities Control
       $scope.closeModal = function() {
         $scope.modal.hide();
       };
-      $rootScope.hide();
+
+
 
     }) /* TODO : Handle exceptions  */
     .error(function(data, status, headers, config) {
-      $rootScope.hide();
+      /*$rootScope.hide();*/
       $rootScope.notify("Oops something went wrong!! Please try again later");
-    });
+    }) ;
 
   /* Options for flexcalendar */
   $scope.options = {
@@ -166,12 +177,15 @@ General Activities Control
   if (!$rootScope.isSessionActive()) {
     $window.location.href = ('#/login');
   }
+  $rootScope.show();
 
   var userData = $rootScope.getToken();
   /* scope method to update new activity */
   API.getExisting(userData, $stateParams.activityUID)
     .success(function(data, status, headers, config) {
       $scope.activity = data[0];
+      $rootScope.hide();
+
     }) /* TODO : Handle exceptions  */
     .error(function(data, status, headers, config) {
       $rootScope.hide();
@@ -290,6 +304,7 @@ General Activities Control
     }
   }
   if (isUpdateReq) {
+    $rootScope.show();
     API.getExisting($rootScope.getToken(), activityDataId)
       .success(function(data, status, headers, config) {
         $scope.activity = data[0];
@@ -299,6 +314,7 @@ General Activities Control
         console.log($scope.endTimeMinutes);
         $("#slider-range").empty();
         timeSlider($scope.startTimeMinutes, $scope.endTimeMinutes);
+        $rootScope.hide();
 
       }) /* TODO : Handle exceptions  */
       .error(function(data, status, headers, config) {
@@ -307,13 +323,11 @@ General Activities Control
       });
     $scope.createNew = function() {
       $rootScope.show();
-
       $scope.activity.logTime = moment().format();
       $scope.activity.endTime = timePicker.endTime;
       $scope.activity.startTime = timePicker.startTime;
       $scope.activity.startDate = $scope.activity.startTime.substring(0, 10);
       $scope.activity.user = $rootScope.getToken();
-
       API.putItem($scope.activity._id,$scope.activity, $rootScope.getToken())
         .success(function(data, status, headers, config) {
 
@@ -321,9 +335,10 @@ General Activities Control
           $ionicHistory.nextViewOptions({
             disableBack: true
           });
-          $state.go('app.home');
+
           $rootScope.hide("Updated");
-          $rootScope.doRefresh(1);
+          $state.go('app.home');
+          /*$rootScope.doRefresh(1);*/
 
         }) /* TODO : Handle exceptions  */
         .error(function(data, status, headers, config) {
