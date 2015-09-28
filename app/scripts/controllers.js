@@ -337,7 +337,8 @@ General Activities Control
           });
 
           $rootScope.hide("Updated");
-          $state.go('app.home');
+          $window.location.href = ('#/app/home');
+          /*$state.go('app.home');*/
           /*$rootScope.doRefresh(1);*/
 
         }) /* TODO : Handle exceptions  */
