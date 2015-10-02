@@ -115,16 +115,16 @@ General Activities Control
         });
         /*Function call to get data, multiple calls to server, needed for lazy loading in future*/
         getData(data[i],data.length);
-        if(i==(data.length-1)){
-          /*$rootScope.hide();*/
-        }
       }
 
+      if(data.length==0){
+        $rootScope.hide();
+      }
       /*remove the following snippet, this feature is removed */
-      $("#diaryEvents .hasData").on('click touchstart', function() {
+      /*$("#diaryEvents .hasData").on('click touchstart', function() {
         var ele = $(this);
         showActivity(ele);
-      });
+      });*/
 
       /* Load flexcalendar */
       $ionicModal.fromTemplateUrl('calendar-modal.html', {
