@@ -27,7 +27,7 @@ span {
   background-image: url("../images/click-here.png");
 }
 .platform-ios #homeView .list {
-  top: 90px;
+  // top: 90px;
 }
 #homeView .list {
   // top: 115px;
@@ -191,6 +191,18 @@ label {
   z-index: 9;
   left: 84%;
 }
+
+#addNew.deleteButton {
+    top: 3%;
+    background: #F44F6D;
+    border: 1px solid rgb(255, 255, 255);
+    left: 90%;
+    width: 30px;
+    padding: 4px;
+    box-shadow: none;
+    color: #fff;
+}
+
 ion-view.pane {
   /*background-image: url(../images/ricepaper2.png);*/
   border-color: #b2b2b2;

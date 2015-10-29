@@ -44,7 +44,6 @@ General Activities Control
     API.getAll(userData, date)
       .success(function(data, status, headers, config) {
 
-
         /* Date header (eg. 13 September 2015)  */
         var dateHeader = {};
         dateHeader.day = moment(date).format("DD");
@@ -63,12 +62,43 @@ General Activities Control
           count=0;
         }
 
+      }) /* TODO : Handle exceptions  */
+      .error(function(data, status, headers, config) {
+        /*$rootScope.hide();*/
+        $rootScope.notify("Oops something went wrong!! Please try again later");
+      });
+  }
+
+  function getAllData(dates){
+    API.getAllInOne(userData, dates)
+      .success(function(data, status, headers, config) {
+        for (var i = 0; i < data.length; i++) {
+          /* Date header (eg. 13 September 2015)  */
+          var date = data[i]._id;
+          var dateHeader = {};
+          dateHeader.day = moment(date).format("DD");
+          dateHeader.month = moment(date).format("MMM");
+          dateHeader.year = moment(date).format("YYYY");
+          dateHeader.isHeader = true;
+          for (var j = 0; j < data[i].items.length; j++) {
+            activityObject.unshift(data[i].items[j]);
+          }
+          activityObject.unshift(dateHeader);
+
+          // if(i == data.length){
+          //   $rootScope.hide();
+          // }
+        }
+        $rootScope.hide();
+
+
 
       }) /* TODO : Handle exceptions  */
       .error(function(data, status, headers, config) {
         /*$rootScope.hide();*/
         $rootScope.notify("Oops something went wrong!! Please try again later");
       });
+
   }
 
   /* Display activity in calendar - NOTE : REMOVE THIS FUNCTION SOON, THIS FEATURE IS REMOVED*/
@@ -109,14 +139,15 @@ General Activities Control
         return moment(b).toDate() - moment(a).toDate();
       });
 
-      for (var i = 0; i < data.length; i++) {
-        $scope.events.push({
-          date: data[i]
-        });
-        /*Function call to get data, multiple calls to server, needed for lazy loading in future*/
-        getData(data[i],data.length);
-      }
+      // for (var i = 0; i < data.length; i++) {
+      //   $scope.events.push({
+      //     date: data[i]
+      //   });
+      //   /*Function call to get data, multiple calls to server, needed for lazy loading in future*/
+      //   getData(data[i],data.length);
+      // }
 
+      getAllData(data);
       if(data.length==0){
         $rootScope.hide();
       }
@@ -172,7 +203,7 @@ General Activities Control
 
 })
 
-.controller('existingActivityCtrl', function($rootScope, API, $scope, $window, $ionicModal, $stateParams) {
+.controller('existingActivityCtrl', function($rootScope, API, $scope, $window, $ionicModal, $stateParams,$ionicPopup) {
   /* User auth */
   if (!$rootScope.isSessionActive()) {
     $window.location.href = ('#/login');
@@ -196,6 +227,25 @@ General Activities Control
     date = moment(date).format("x");
     $window.location.href = ('#/app/activities/' + activityCatId + '/' + date + "?update=true&id=" + activityID);
   }
+  $scope.deleteActivity = function(activityID) {
+  var confirmPopup = $ionicPopup.confirm({
+    title: 'Delete activity',
+    template: 'Are you sure you want to delete this activity?',
+    okText: "Confirm"
+  });
+  confirmPopup.then(function(res) {
+    if(res) {
+      $rootScope.show('Loading...');
+      API.deleteItem(activityID,userData).success(function(data) {
+        $rootScope.hide();
+        $window.location.href = ('#/app/home');
+      }).error(function(error) {
+        $rootScope.hide();
+        $rootScope.notify("Error deleting, try again!");
+      });
+    }
+  });
+};
 
 })
 
@@ -284,7 +334,6 @@ General Activities Control
   if (!$rootScope.isSessionActive()) {
     $window.location.href = ('#/login');
   }
-  console.log($stateParams.date);
   var isUpdateReq = Boolean(gup("update", location.hash)),
     activityDataId = gup("id", location.hash);
   $scope.update = isUpdateReq ? true : false;
@@ -310,8 +359,6 @@ General Activities Control
         $scope.activity = data[0];
         $scope.startTimeMinutes = 1440 - (parseInt(moment(data[0].startTime).format("mm")) + parseInt(moment(data[0].startTime).format("HH") * 60));
         $scope.endTimeMinutes = 1440 - (parseInt(moment(data[0].endTime).format("mm")) + parseInt(moment(data[0].endTime).format("HH") * 60));
-        console.log($scope.startTimeMinutes);
-        console.log($scope.endTimeMinutes);
         $("#slider-range").empty();
         timeSlider($scope.startTimeMinutes, $scope.endTimeMinutes);
         $rootScope.hide();
