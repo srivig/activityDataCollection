@@ -9,7 +9,7 @@
     <ion-list id="homeView" class="custom-list-home">
 
       <!-- <flex-calendar options="options" events="events" ></flex-calendar> -->
-
+      <div class="text-center " id="getStartedMsg"><h3>Tap (+) button to add a new activity :)</h3> </div>
       <ion-item ng-repeat="activity in listActivities" class="activityListContainer" ng-class="{'divider': activity.isHeader}">
         <div class="dateHeader">
           <div class="dateHeaderDay">{{activity.day}}</div>

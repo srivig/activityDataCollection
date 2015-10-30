@@ -465,3 +465,8 @@ ion-item.activityListContainer.item.divider .dateHeader {
   position: absolute;
   left: 54px;
   font-size: 1em; }
+
+#getStartedMsg h3 {
+  margin-top: 10%;
+  color: #F44F6D;
+  text-shadow: 3px 3px 15px rgba(150, 150, 150, 0.23); }

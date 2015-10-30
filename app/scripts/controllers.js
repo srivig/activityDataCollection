@@ -150,6 +150,8 @@ General Activities Control
       getAllData(data);
       if(data.length==0){
         $rootScope.hide();
+      }else{
+        $("#getStartedMsg").hide();
       }
       /*remove the following snippet, this feature is removed */
       /*$("#diaryEvents .hasData").on('click touchstart', function() {
