@@ -1,5 +1,5 @@
 angular.module('myDiaryApp.services', [])
-  .factory('API', function($rootScope, $http, $ionicLoading, $window) {
+  .factory('API', function($rootScope, $http, $ionicLoading, $window, $ionicPopup ) {
     var base = "https://mydiarybeta.herokuapp.com/";
     // var base = "http://localhost:9804/";
 
@@ -30,6 +30,9 @@ angular.module('myDiaryApp.services', [])
       $window.setTimeout(function() {
         $rootScope.hide();
       }, 1999);
+      $ionicPopup.alert({
+         template: text
+      });
     };
     $rootScope.doRefresh = function(tab) {
       if (tab == 1)

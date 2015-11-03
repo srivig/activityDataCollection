@@ -318,6 +318,7 @@ General Activities Control
     }).error(function(error) {
       $rootScope.hide();
       if (error.error && error.error.code == 11000) {
+        
         $rootScope.notify("A user with this email already exists");
       } else {
         $rootScope.notify("Oops something went wrong, Please try again!");
