@@ -358,7 +358,7 @@ label.activityPageLabel {
 
 .login-signup-page {
   background: #f44f6d;
-  box-shadow: 0 0 201px 32px rgba(0, 0, 0, 0.29) inset; }
+  box-shadow: 0 0 201px 32px #df5e3e inset; }
 
 .login-signup-form {
   margin-top: 28px; }
