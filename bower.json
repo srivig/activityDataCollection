@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "ionic": "v1.0.1",
-    "ngCordova": "0.1.12-alpha",
+    "ngCordova": "~0.1.20-alpha",
     "userapp-angular": "~2.0.4",
     "userapp-phonegap": "~1.2.0",
     "jquery": "~2.1.3",
