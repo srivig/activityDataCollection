@@ -318,7 +318,7 @@ General Activities Control
     }).error(function(error) {
       $rootScope.hide();
       if (error.error && error.error.code == 11000) {
-        
+
         $rootScope.notify("A user with this email already exists");
       } else {
         $rootScope.notify("Oops something went wrong, Please try again!");
@@ -359,9 +359,21 @@ General Activities Control
     $rootScope.show();
     API.getExisting($rootScope.getToken(), activityDataId)
       .success(function(data, status, headers, config) {
+
+       function get24Hours( hours, AMPM){
+          if (AMPM == "PM" && hours < 12) hours = hours + 12;
+          if (AMPM == "AM" && hours == 12) hours = hours - 12;
+          return hours;
+        }
+        var sDate = (data[0].startTime).split(/[- :]/),
+        sDateObj = new Date(sDate[0], sDate[1]-1, sDate[2], get24Hours(sDate[3],sDate[5]), sDate[4], "00");
+        var eDate = (data[0].endTime).split(/[- :]/),
+            eDateObj = new Date(eDate[0], eDate[1]-1, eDate[2], get24Hours(eDate[3],eDate[5]), eDate[4], "00");
+
         $scope.activity = data[0];
-        $scope.startTimeMinutes = 1440 - (parseInt(moment(data[0].startTime).format("mm")) + parseInt(moment(data[0].startTime).format("HH") * 60));
-        $scope.endTimeMinutes = 1440 - (parseInt(moment(data[0].endTime).format("mm")) + parseInt(moment(data[0].endTime).format("HH") * 60));
+        $scope.startTimeMinutes = 1440 - (parseInt(moment(sDateObj).format("mm")) + parseInt(moment(sDateObj).format("HH") * 60));
+        $scope.endTimeMinutes = 1440 - (parseInt(moment(eDateObj).format("mm")) + parseInt(moment(eDateObj).format("HH") * 60));
+
         $("#slider-range").empty();
         timeSlider($scope.startTimeMinutes, $scope.endTimeMinutes);
         $rootScope.hide();
