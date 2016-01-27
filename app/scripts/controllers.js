@@ -291,13 +291,17 @@ General Activities Control
 /**--------------------------------------------
  Controller for signup functions - TODO: add better security
 --------------------------------------------**/
-.controller('SignUpCtrl', function($rootScope, $scope, API, $window,$ionicPopup) {
+.controller('SignUpCtrl', function($rootScope, $scope, API, $window,$ionicPopup,$ionicScrollDelegate) {
   $scope.user = {
     email: "",
     password: "",
     name: "",
     consent: false
   };
+
+  $ionicScrollDelegate.$getByHandle('mainScroll').scrollTop();
+  $ionicScrollDelegate.$getByHandle('small').scrollTop();
+
   var myPopup = $ionicPopup.show({
       template: '<style>.popup { width:90%!important; }</style><p>Welcome to the Student Wellbeing Study! This study will help us find out how your wellbeing at university relates to the data your phone captures about your day. This page contains the diary part of the study. Any data collected will remain private and be securely stored. You have the right to opt out of this research at any time. Only members of the research team will be able to access your data, and only for the purpose of conducting further research about mood and sensor data. You also have the right to access any information related to you, and request for any part of that data to be removed. This study is being conducted by researchers at the University of Cambridge, UK. For further information, please contact: srm77@cam.ac.uk</p>',
       title: 'Consent Form',

@@ -562,3 +562,10 @@ ion-item.activityListContainer {
     color: #F44F6D;
     text-shadow: 3px 3px 15px rgba(150, 150, 150, 0.23);
 }
+
+.keyboard-open .tabs{
+  display:none;
+  }
+.keyboard-open .has-tabs{
+ bottom:0;
+ }
