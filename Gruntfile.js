@@ -231,6 +231,11 @@ module.exports = function (grunt) {
           cwd: '.temp/<%= yeoman.images %>',
           dest: '<%= yeoman.dist %>/<%= yeoman.images %>',
           src: ['generated/*']
+        },{
+            expand: true,
+            cwd: '<%= yeoman.app %>/bower_components/ionicons/fonts/',
+            src: ['**'],
+            dest: '<%= yeoman.dist %>/fonts/' // Ionicons copy hack
         }]
       },
       styles: {
@@ -510,7 +515,7 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'usemin',
-    'htmlmin'
+    // 'htmlmin'
   ]);
 
   grunt.registerTask('coverage',
