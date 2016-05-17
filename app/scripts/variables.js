@@ -40,6 +40,11 @@ var activities = [{
     title: 'Other Relaxation',
     id: 6,
     icon: 'ion-ios-flower-outline'
+  },
+  {
+    title: 'Other',
+    id: 7,
+    icon: 'ion-star'
   }
 
 ];
